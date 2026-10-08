@@ -1,0 +1,412 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Canuto de la Utrera Tours · Guided routes in the Sierra de la Utrera</title>
+  <meta name="description" content="Active tourism project offering guided routes through the natural and geological setting of the Sierra de la Utrera, between Casares and Manilva (Málaga, Spain).">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="en_GB">
+  <meta property="og:locale:alternate" content="es_ES">
+  <meta property="og:site_name" content="Canuto de la Utrera Tours">
+  <meta property="og:title" content="Canuto de la Utrera Tours · Guided routes in the Sierra de la Utrera">
+  <meta property="og:description" content="Active tourism project offering guided routes through the natural and geological setting of the Sierra de la Utrera, between Casares and Manilva (Málaga, Spain).">
+  <link rel="alternate" hreflang="es" href="index.html">
+  <link rel="alternate" hreflang="en" href="en.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="theme-color" content="#101b15">
+  <meta name="color-scheme" content="light dark">
+  <script>try{var t=localStorage.getItem("tema");if(t==="claro"||t==="oscuro")document.documentElement.dataset.tema=t}catch(e){}</script>
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="favicon-180.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Figtree:wght@400;600;700&display=swap">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="vendor/leaflet/leaflet.css">
+</head>
+<body>
+  <a class="saltar" href="#contenido">Skip to content</a>
+
+  <header class="cabecera">
+    <div class="envoltura cabecera-in">
+      <a class="marca" href="#inicio"><img src="img/marca-clara.png" alt="" width="44" height="37"><span>Canuto de la Utrera Tours</span></a>
+      <nav aria-label="Main">
+        <ul>
+          <li><a href="#rutas">Routes</a></li>
+          <li><a href="#mapa">Map</a></li>
+          <li><a href="#entorno">Landscape</a></li>
+          <li><a href="#naturaleza">Nature</a></li>
+          <li><a href="#preguntas">FAQ</a></li>
+          <li><a href="#reservas">Request a date</a></li>
+        </ul>
+      </nav>
+      <button type="button" class="tema" data-tema aria-pressed="false" hidden><span class="sr-only">Dark mode</span><svg class="tema-sol" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg><svg class="tema-luna" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"/></svg></button>
+      <a class="idioma" href="index.html" hreflang="es" lang="es" aria-label="Leer esta página en español"><span aria-hidden="true">ES</span></a>
+    </div>
+  </header>
+
+  <main id="contenido" tabindex="-1">
+    <section class="portada" id="inicio" aria-labelledby="inicio-t">
+      <div class="envoltura portada-in">
+        <div class="portada-texto">
+          <img class="portada-logo" src="img/logo-claro.png" alt="Logo of Canuto de la Utrera Tours" width="640" height="661">
+          <p class="antetitulo">Sierra de la Utrera · Casares and Manilva, Málaga</p>
+          <h1 id="inicio-t">Guided routes among limestone, water and greenery</h1>
+          <p class="entradilla">Canuto de la Utrera Tours is an active tourism project in preparation. The idea: guided walks through the karst landscape of the Sierra de la Utrera, its gorges and the surrounding area.</p>
+          <p class="estado">Project in development</p>
+          <p class="portada-acciones"><a class="boton boton-claro" href="#rutas">See the routes</a><a class="boton boton-borde" href="#reservas">Check dates</a></p>
+        </div>
+        <div class="portada-fotos">
+          <figure class="pf pf-1"><img src="img/sendero-canuto.jpg" srcset="img/sendero-canuto-800.jpg 800w, img/sendero-canuto.jpg 1600w" sizes="(min-width: 60rem) 34rem, 100vw" alt="Path through vegetation leading into a gorge with limestone walls" loading="eager" decoding="async"></figure>
+          <figure class="pf pf-2"><img src="img/barranco.jpg" srcset="img/barranco-800.jpg 800w, img/barranco.jpg 1600w" sizes="(min-width: 60rem) 17rem, 1px" alt="Limestone walls closing in among trees to form a gorge" loading="eager" decoding="async"></figure>
+          <figure class="pf pf-3"><img src="img/agua-turquesa.jpg" srcset="img/agua-turquesa-800.jpg 800w, img/agua-turquesa.jpg 1600w" sizes="(min-width: 60rem) 17rem, 1px" alt="Turquoise water flowing between stone slabs and reeds" loading="eager" decoding="async"></figure>
+        </div>
+      </div>
+      <svg class="estratos" viewBox="0 0 1200 360" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+      <path class="e1" d="M0 120 L90 96 L170 128 L260 82 L340 110 L430 70 L520 104 L600 64 L700 98 L790 58 L880 92 L980 60 L1080 96 L1200 72 V360 H0Z"/>
+      <path class="e2" d="M0 176 L110 150 L200 182 L300 140 L400 170 L500 132 L610 166 L720 128 L820 160 L930 126 L1040 158 L1200 132 V360 H0Z"/>
+      <path class="e3" d="M0 232 L120 210 L240 238 L360 204 L480 232 L600 200 L720 228 L840 198 L960 226 L1080 202 L1200 222 V360 H0Z"/>
+      <path class="e4" d="M0 286 C200 268 340 300 520 284 S860 266 1000 286 S1140 296 1200 288 V360 H0Z"/>
+      <path class="agua" d="M0 330 C150 318 300 340 450 328 S750 316 900 330 S1100 342 1200 326 V360 H0Z"/>
+    </svg>
+    </section>
+
+    <section class="seccion" id="rutas" aria-labelledby="rutas-t">
+      <div class="envoltura">
+        <p class="kicker">Two routes and an alternative</p>
+        <h2 id="rutas-t">Proposed routes</h2>
+        <p class="aviso">The figures for each route come from tracks published on Wikiloc. They were recorded by whoever logged the route, are not the length of a guided activity, and must be checked on the ground before the route is offered.</p>
+        <div class="rutas">
+      <article class="ruta ruta-facil" id="ruta-facil" aria-labelledby="ruta-facil-t">
+        <figure class="ruta-foto"><img src="img/poza.jpg" srcset="img/poza-800.jpg 800w, img/poza.jpg 1600w" sizes="(min-width: 56rem) 36rem, 100vw" alt="Clear pool at the foot of rock walls covered in vegetation" loading="lazy" decoding="async"></figure>
+        <div class="ruta-cuerpo">
+        <div class="ruta-cab">
+          <p class="ruta-etiqueta">Easy route</p>
+          <h3 id="ruta-facil-t">Canuto de la Utrera and Baños de la Hedionda</h3>
+          <p class="nivel nivel-facil"><span class="nivel-marcas" aria-hidden="true"><span class="on"></span><span class=""></span><span class=""></span></span>Wikiloc: Easy</p>
+        </div>
+        <p class="ruta-resumen">Short out-and-back walk through the leafy stretch of the Canuto, returning the same way. The track passes close to the Baños de la Hedionda.</p>
+        <dl class="ruta-datos">
+          <div><dt>Track distance</dt><dd>3.63 km</dd></div>
+          <div><dt>Elevation gain</dt><dd>163 m</dd></div>
+          <div><dt>Type</dt><dd>Out and back</dd></div>
+          <div><dt>Moving time (recorded)</dt><dd>1 h 13 min</dd></div>
+          <div><dt>Total time (recorded)</dt><dd>2 h 28 min</dd></div>
+        </dl>
+        <ul class="ruta-notas"><li>Visiting the inside of the Baños de la Hedionda or bathing in its waters is not part of this route: access conditions have not been verified.</li></ul>
+        <p class="ruta-fuente"><a href="https://es.wikiloc.com/rutas-senderismo/canuto-de-la-utrera-y-banos-de-la-hedionda-casares-malaga-23-05-2021-73880812" rel="noopener" target="_blank" hreflang="es">Wikiloc track: Canuto de la Utrera y Baños de la Hedionda<span class="sr-only"> (opens in a new tab)</span></a></p>
+        </div>
+      </article>
+      <article class="ruta ruta-dificil" id="ruta-dificil" aria-labelledby="ruta-dificil-t">
+        <figure class="ruta-foto"><img src="img/paredes-karsticas.jpg" srcset="img/paredes-karsticas-800.jpg 800w, img/paredes-karsticas.jpg 1600w" sizes="(min-width: 56rem) 36rem, 100vw" alt="Cracked limestone walls with hollows, seen from above" loading="lazy" decoding="async"></figure>
+        <div class="ruta-cuerpo">
+        <div class="ruta-cab">
+          <p class="ruta-etiqueta">Difficult route</p>
+          <h3 id="ruta-dificil-t">Baños, Poza de la Paloma, Torcal and Canuto</h3>
+          <p class="nivel nivel-dificil"><span class="nivel-marcas" aria-hidden="true"><span class="on"></span><span class="on"></span><span class="on"></span></span>Wikiloc: Difficult</p>
+        </div>
+        <p class="ruta-resumen">Long loop linking the Baños de la Hedionda, the Poza de la Paloma and the Torcal de Utrera, returning through the Canuto de la Utrera.</p>
+        <dl class="ruta-datos">
+          <div><dt>Track distance</dt><dd>14.11 km</dd></div>
+          <div><dt>Elevation gain</dt><dd>476 m</dd></div>
+          <div><dt>Type</dt><dd>Loop</dd></div>
+          <div><dt>Moving time (recorded)</dt><dd>5 h 15 min</dd></div>
+          <div><dt>Total time (recorded)</dt><dd>7 h 51 min</dd></div>
+        </dl>
+        <ul class="ruta-notas"><li>The track description mentions rocky ground, scrambles and sections that need care.</li><li>A Wikiloc comment from August 2025 said that at that time the path was lost in several places and there were brambles. The current state of the route has not been checked.</li></ul>
+        <p class="ruta-fuente"><a href="https://es.wikiloc.com/rutas-senderismo/banos-la-hedionda-poza-de-la-paloma-torcal-de-utrera-y-vuelta-por-canuto-de-utrera-en-casares-46228989" rel="noopener" target="_blank" hreflang="es">Wikiloc track: Baños la Hedionda, Poza de la Paloma, Torcal de Utrera y vuelta por Canuto de Utrera<span class="sr-only"> (opens in a new tab)</span></a></p>
+        </div>
+      </article>
+        </div>
+        <div class="alternativas">
+          <h3 class="alt-t">Also being considered</h3>
+      <article class="ruta ruta-moderada ruta-alt" id="ruta-moderada" aria-labelledby="ruta-moderada-t">
+        <figure class="ruta-foto"><img src="img/edificio-camino.jpg" srcset="img/edificio-camino-800.jpg 800w, img/edificio-camino.jpg 1600w" sizes="(min-width: 56rem) 36rem, 100vw" alt="Small white building beside a dirt track, with the mountains behind" loading="lazy" decoding="async"></figure>
+        <div class="ruta-cuerpo">
+        <div class="ruta-cab">
+          <p class="ruta-etiqueta">Moderate alternative route</p>
+          <h3 id="ruta-moderada-t">Baños de la Hedionda, Molino Cancón and Canuto de la Utrera</h3>
+          <p class="nivel nivel-moderada"><span class="nivel-marcas" aria-hidden="true"><span class="on"></span><span class="on"></span><span class=""></span></span>Wikiloc: Moderate</p>
+        </div>
+        <p class="ruta-resumen">Loop of intermediate length between the two routes above, passing the Molino Cancón and the Canuto de la Utrera.</p>
+        <dl class="ruta-datos">
+          <div><dt>Track distance</dt><dd>9.74 km</dd></div>
+          <div><dt>Elevation gain</dt><dd>352 m</dd></div>
+          <div><dt>Type</dt><dd>Loop</dd></div>
+          <div><dt>Moving time (recorded)</dt><dd>2 h 23 min</dd></div>
+          <div><dt>Total time (recorded)</dt><dd>3 h 24 min</dd></div>
+        </dl>
+        
+        <p class="ruta-fuente"><a href="https://es.wikiloc.com/rutas-senderismo/circular-banos-de-la-hedionda-molino-cancon-canuto-de-la-utrera-casares-malaga-10-12-2018-31274922" rel="noopener" target="_blank" hreflang="es">Wikiloc track: Circular Baños de la Hedionda, Molino Cancón, Canuto de la Utrera<span class="sr-only"> (opens in a new tab)</span></a></p>
+        </div>
+      </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="seccion seccion-mapa" id="mapa" aria-labelledby="mapa-t">
+      <div class="envoltura">
+        <p class="kicker">Where it is</p>
+        <h2 id="mapa-t">Map of the area</h2>
+        <p class="entradilla-sec">Reference points on the routes. Positions are approximate; the exact path of each route is in its Wikiloc track.</p>
+        <div class="mapa-in">
+          <div class="mapa-lienzo-caja">
+            <div id="mapa-lienzo" class="mapa-lienzo" data-mapa hidden></div>
+            <p class="mapa-aviso" id="mapa-aviso" role="status">To see the map, please enable JavaScript. The reference points are listed here.</p>
+          </div>
+          <div class="mapa-lista">
+            <h3>Places on the map</h3>
+            <ol>
+              <li class="mp-agua"><span class="mapa-num" aria-hidden="true">1</span><div><strong lang="es">Baños de la Hedionda</strong><span>Sulphurous spring. On all three tracks.</span>
+                <span class="mapa-acciones"><button type="button" class="enlace" data-mapa-punto="0" hidden>Show on map</button> <a href="https://www.komoot.com/highlight/4078869" rel="noopener" target="_blank">See on komoot<span class="sr-only"> (opens in a new tab)</span></a></span></div></li>
+              <li class="mp-canuto"><span class="mapa-num" aria-hidden="true">2</span><div><strong lang="es">Canuto de la Utrera</strong><span>Leafy stretch enclosed by rock.</span>
+                <span class="mapa-acciones"><button type="button" class="enlace" data-mapa-punto="1" hidden>Show on map</button> <a href="https://www.komoot.com/highlight/4354990" rel="noopener" target="_blank">See on komoot<span class="sr-only"> (opens in a new tab)</span></a></span></div></li>
+              <li class="mp-roca"><span class="mapa-num" aria-hidden="true">3</span><div><strong lang="es">Torcal de Utrera</strong><span>Limestone shaped by water. Difficult route.</span>
+                <span class="mapa-acciones"><button type="button" class="enlace" data-mapa-punto="2" hidden>Show on map</button> <a href="https://www.komoot.com/highlight/4078865" rel="noopener" target="_blank">See on komoot<span class="sr-only"> (opens in a new tab)</span></a></span></div></li>
+            </ol>
+            <p class="mapa-nota">The Poza de la Paloma and the Molino Cancón are not on the map: we have not found verified published coordinates for them.</p>
+            <p class="mapa-nota"><a href="https://www.komoot.com/highlight/4354990" rel="noopener" target="_blank">Coordinates: komoot highlights<span class="sr-only"> (opens in a new tab)</span></a> · © <a href="https://www.openstreetmap.org/copyright" rel="noopener" target="_blank">OpenStreetMap</a></p>
+          </div>
+        </div>
+      </div>
+      <script id="datos-mapa" type="application/json">{"centro":[36.3952,-5.2695],"zoom":15,"region":"Interactive map of the Sierra de la Utrera","puntos":[{"nombre":"Baños de la Hedionda","lat":36.39648,"lon":-5.26131,"tipo":"agua","texto":"Sulphurous spring. On all three tracks."},{"nombre":"Canuto de la Utrera","lat":36.393805,"lon":-5.26955,"tipo":"canuto","texto":"Leafy stretch enclosed by rock."},{"nombre":"Torcal de Utrera","lat":36.396833,"lon":-5.278472,"tipo":"roca","texto":"Limestone shaped by water. Difficult route."}]}</script>
+    </section>
+
+    <section class="seccion seccion-entorno" id="entorno" aria-labelledby="entorno-t">
+      <div class="envoltura entorno-in">
+        <div class="entorno-texto">
+          <p class="kicker">Rock, water and greenery</p>
+          <h2 id="entorno-t">The landscape</h2>
+          <p>The Sierra de la Utrera is a limestone range whose karst landscape is the result of water acting on the rock.</p>
+          <p>Within the rock lies the Canuto de la Utrera, a narrow, leafy stretch where the vegetation contrasts with the bare stone around it. Nearby are the Baños de la Hedionda, a site linked to water that gives its name to several of the routes.</p>
+          <p>The routes are about taking in this landscape slowly: how the rock changes, where the water runs and which plants make use of every corner.</p>
+        </div>
+        <div class="entorno-lugares">
+          <h3>Places on the routes</h3>
+          <ul>
+            <li><strong lang="es">Canuto de la Utrera</strong><span>Leafy stretch enclosed by rock.</span></li>
+            <li><strong lang="es">Torcal de Utrera</strong><span>Area of limestone shaped by water.</span></li>
+            <li><strong lang="es">Poza de la Paloma</strong><span>Point on the long loop.</span></li>
+            <li><strong lang="es">Baños de la Hedionda</strong><span>Water-linked site that appears on all three reference tracks.</span></li>
+            <li><strong lang="es">Molino Cancón</strong><span>Point on the moderate alternative route.</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="envoltura"><h3 class="galeria-t">Images of the area</h3><div class="galeria">
+        <figure class="gal gal-1"><a class="gal-enlace" href="img/banos-boveda.jpg" data-lightbox data-pie="Baños de la Hedionda" data-alt="Stone vault with bands of brick over a sheet of turquoise water"><span class="sr-only">Enlarge photo: Baños de la Hedionda</span><img src="img/banos-boveda.jpg" srcset="img/banos-boveda-800.jpg 800w, img/banos-boveda.jpg 1600w" sizes="(min-width: 48rem) 24rem, 50vw" alt="Stone vault with bands of brick over a sheet of turquoise water" loading="lazy" decoding="async"></a><figcaption>Baños de la Hedionda</figcaption></figure>
+        <figure class="gal gal-2"><a class="gal-enlace" href="img/cueva.jpg" data-lightbox data-pie="Limestone" data-alt="Limestone wall with the mouth of a cave, surrounded by scrub"><span class="sr-only">Enlarge photo: Limestone</span><img src="img/cueva.jpg" srcset="img/cueva-800.jpg 800w, img/cueva.jpg 1600w" sizes="(min-width: 48rem) 24rem, 50vw" alt="Limestone wall with the mouth of a cave, surrounded by scrub" loading="lazy" decoding="async"></a><figcaption>Limestone</figcaption></figure>
+        <figure class="gal gal-3"><a class="gal-enlace" href="img/prado-farallon.jpg" data-lightbox data-pie="At the foot of the range" data-alt="Green meadow enclosed by walls at the foot of a limestone cliff"><span class="sr-only">Enlarge photo: At the foot of the range</span><img src="img/prado-farallon.jpg" srcset="img/prado-farallon-800.jpg 800w, img/prado-farallon.jpg 1600w" sizes="(min-width: 48rem) 24rem, 50vw" alt="Green meadow enclosed by walls at the foot of a limestone cliff" loading="lazy" decoding="async"></a><figcaption>At the foot of the range</figcaption></figure>
+        <figure class="gal gal-4"><a class="gal-enlace" href="img/poza.jpg" data-lightbox data-pie="Water" data-alt="Clear pool at the foot of rock walls covered in vegetation"><span class="sr-only">Enlarge photo: Water</span><img src="img/poza.jpg" srcset="img/poza-800.jpg 800w, img/poza.jpg 1600w" sizes="(min-width: 48rem) 24rem, 50vw" alt="Clear pool at the foot of rock walls covered in vegetation" loading="lazy" decoding="async"></a><figcaption>Water</figcaption></figure>
+        <figure class="gal gal-5"><a class="gal-enlace" href="img/paredes-karsticas.jpg" data-lightbox data-pie="Karst landscape" data-alt="Cracked limestone walls with hollows, seen from above"><span class="sr-only">Enlarge photo: Karst landscape</span><img src="img/paredes-karsticas.jpg" srcset="img/paredes-karsticas-800.jpg 800w, img/paredes-karsticas.jpg 1600w" sizes="(min-width: 48rem) 24rem, 50vw" alt="Cracked limestone walls with hollows, seen from above" loading="lazy" decoding="async"></a><figcaption>Karst landscape</figcaption></figure>
+        <figure class="gal gal-6"><a class="gal-enlace" href="img/agua-turquesa.jpg" data-lightbox data-pie="Water and riverside plants" data-alt="Turquoise water flowing between stone slabs and reeds"><span class="sr-only">Enlarge photo: Water and riverside plants</span><img src="img/agua-turquesa.jpg" srcset="img/agua-turquesa-800.jpg 800w, img/agua-turquesa.jpg 1600w" sizes="(min-width: 48rem) 24rem, 50vw" alt="Turquoise water flowing between stone slabs and reeds" loading="lazy" decoding="async"></a><figcaption>Water and riverside plants</figcaption></figure>
+      </div></div>
+    </section>
+
+
+    <section class="seccion seccion-naturaleza" id="naturaleza" aria-labelledby="naturaleza-t">
+      <div class="envoltura">
+        <p class="kicker">Geology, water, plants and wildlife</p>
+        <h2 id="naturaleza-t">The Sierra de la Utrera</h2>
+        <p class="entradilla-sec">A limestone massif shaped by water, with gorges, a sulphurous spring and birds that nest on its cliffs. This is what the sources we consulted say.</p>
+        <div class="naturaleza">
+          <article class="nat nat-geologia" aria-labelledby="nat-geologia-t">
+            <h3 id="nat-geologia-t">Geology</h3>
+            <p>The range is made mainly of nodular and oolitic limestones formed in the Jurassic. It is a tectonic window: an outcrop surrounded by geological units of the Internal Betics.</p>
+            <p>Water dissolving the limestone has created a maze of karst relief that Casares Town Council compares to the Torcal de Antequera.</p>
+            <p class="nat-fuentes">Sources: <a href="https://malagapedia.wikanda.es/wiki/Canuto_de_Utrera" rel="noopener" target="_blank">Malagapedia: Canuto de Utrera (Spanish)<span class="sr-only"> (opens in a new tab)</span></a> · <a href="https://www.casares.es/turismo/naturaleza-2/" rel="noopener" target="_blank">Casares Town Council: Nature (Spanish)<span class="sr-only"> (opens in a new tab)</span></a></p>
+          </article>
+          <article class="nat nat-agua" aria-labelledby="nat-agua-t">
+            <h3 id="nat-agua-t">Water</h3>
+            <p>The range is cut by three narrow valleys running parallel to the coast, known locally as canutos. The Molinos and Albarrán streams join to form the Manilva river.</p>
+            <p>The Baños de la Hedionda (literally “the smelly baths”) take their name from the smell of their sulphurous water. According to Casares Town Council, the spring&#39;s channelling is Roman in origin, was rebuilt in the Islamic period and keeps works from the 17th to the 20th century.</p>
+            <p class="nat-fuentes">Sources: <a href="https://malagapedia.wikanda.es/wiki/Canuto_de_Utrera" rel="noopener" target="_blank">Malagapedia: Canuto de Utrera (Spanish)<span class="sr-only"> (opens in a new tab)</span></a> · <a href="https://www.casares.es/en/tourism/what-to-see-in-casares/hedionda-baths/" rel="noopener" target="_blank">Casares Town Council: Hedionda Baths<span class="sr-only"> (opens in a new tab)</span></a></p>
+          </article>
+          <article class="nat nat-flora" aria-labelledby="nat-flora-t">
+            <h3 id="nat-flora-t">Plants</h3>
+            <p>The range has a coastal juniper woodland on limestone, described as the only one of its kind known, and natural carob woodland, which is scarce in Andalusia and on the Mediterranean coast.</p>
+            <p class="nat-fuentes">Sources: <a href="https://malagapedia.wikanda.es/wiki/Canuto_de_Utrera" rel="noopener" target="_blank">Malagapedia: Canuto de Utrera (Spanish)<span class="sr-only"> (opens in a new tab)</span></a></p>
+          </article>
+          <article class="nat nat-fauna" aria-labelledby="nat-fauna-t">
+            <h3 id="nat-fauna-t">Wildlife</h3>
+            <p>Bonelli&#39;s eagle, one of the most threatened species in the Mediterranean, lives on the rock walls, along with other cliff birds such as the Egyptian vulture, eagle owl, crag martin and black wheatear.</p>
+            <p>Otters and kingfishers are recorded on the river, and bats such as horseshoe bats and Schreiber&#39;s bat in the caves.</p>
+            <p class="nat-fuentes">Sources: <a href="https://www.casares.es/turismo/naturaleza-2/" rel="noopener" target="_blank">Casares Town Council: Nature (Spanish)<span class="sr-only"> (opens in a new tab)</span></a> · <a href="https://malagapedia.wikanda.es/wiki/Canuto_de_Utrera" rel="noopener" target="_blank">Malagapedia: Canuto de Utrera (Spanish)<span class="sr-only"> (opens in a new tab)</span></a></p>
+          </article>
+        </div>
+        <div class="cuidado">
+          <h3>Looking after the range</h3>
+          <ul>
+            <li>Stay on the path and don&#39;t cut across private land.</li>
+            <li>Keep your distance and stay quiet near the cliffs where birds nest.</li>
+            <li>Take all your rubbish home.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="seccion" id="antes" aria-labelledby="antes-t">
+      <div class="envoltura">
+        <p class="kicker">Practical information</p>
+        <h2 id="antes-t">Before you go</h2>
+        <p class="entradilla-sec">These routes are proposals in preparation. Before any activity, the following must be confirmed:</p>
+        <ol class="antes">
+          <li><h3>The route</h3><p>The exact path and the condition of the trail, checked on the ground.</p></li>
+          <li><h3>The times</h3><p>Wikiloc times are for reference; a guided outing may take a different amount of time.</p></li>
+          <li><h3>The conditions</h3><p>The weather forecast, the state of the ground and whether the route&#39;s level suits each person.</p></li>
+          <li><h3>Access</h3><p>Access conditions for the Baños de la Hedionda and each point on the route.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="seccion seccion-faq" id="preguntas" aria-labelledby="preguntas-t">
+      <div class="envoltura">
+        <p class="kicker">Questions</p>
+        <h2 id="preguntas-t">Frequently asked questions</h2>
+        <div class="faq">
+          <details>
+            <summary>How difficult are the routes?</summary>
+            <div class="faq-r"><p>We use the grading of the Wikiloc tracks. The difficult route includes rocky ground, scrambles and sections that need care.</p><ul class="faq-rutas"><li><a href="#ruta-facil">Canuto de la Utrera and Baños de la Hedionda</a>: Easy · 3.63 km · 163 m</li><li><a href="#ruta-dificil">Baños, Poza de la Paloma, Torcal and Canuto</a>: Difficult · 14.11 km · 476 m</li><li><a href="#ruta-moderada">Baños de la Hedionda, Molino Cancón and Canuto de la Utrera</a>: Moderate · 9.74 km · 352 m</li></ul></div>
+          </details>
+          <details>
+            <summary>How long does each route take?</summary>
+            <div class="faq-r"><p>These are the times recorded on Wikiloc by whoever logged each track. The length of a guided outing has not been set yet and may be different.</p><ul class="faq-rutas"><li><a href="#ruta-facil">Canuto de la Utrera and Baños de la Hedionda</a>: moving time (recorded) 1 h 13 min · total time (recorded) 2 h 28 min</li><li><a href="#ruta-dificil">Baños, Poza de la Paloma, Torcal and Canuto</a>: moving time (recorded) 5 h 15 min · total time (recorded) 7 h 51 min</li><li><a href="#ruta-moderada">Baños de la Hedionda, Molino Cancón and Canuto de la Utrera</a>: moving time (recorded) 2 h 23 min · total time (recorded) 3 h 24 min</li></ul></div>
+          </details>
+          <details>
+            <summary>When is the best time to go?</summary>
+            <div class="faq-r"><p>The project has not set seasons yet. Open dates will appear in the calendar, and the weather forecast and the state of the path are checked before every outing.</p></div>
+          </details>
+          <details>
+            <summary>What should I bring?</summary>
+            <div class="faq-r"><p>The kit list will be confirmed for each activity. As for any walk in the hills: footwear with good grip, water, sun protection and clothing suited to the forecast. On the difficult route it helps to keep your hands free for the scrambles.</p></div>
+          </details>
+          <details>
+            <summary>Can I go into or bathe in the Baños de la Hedionda?</summary>
+            <div class="faq-r"><p>It is not part of the proposed routes, because access conditions have not been verified.</p></div>
+          </details>
+          <details>
+            <summary>How much does it cost and how do I book?</summary>
+            <div class="faq-r"><p>Prices have not been set yet. Once places open, you will be able to request a date from the calendar; sending a request does not confirm a place.</p></div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="seccion seccion-reservas" id="reservas" aria-labelledby="reservas-t">
+      <div class="envoltura">
+        <p class="kicker">Calendar 2026–2027</p>
+        <h2 id="reservas-t" tabindex="-1">Request a date</h2>
+        <p class="entradilla-sec">Choose a route and check the calendar. Only dates marked as available can be requested.</p>
+        <noscript><p class="aviso">To use the calendar, please enable JavaScript in your browser.</p></noscript>
+        <div class="reserva" data-reservas hidden>
+          <div class="reserva-cal">
+            <div class="campo">
+              <label for="r-ruta">Route</label>
+              <select id="r-ruta" name="ruta">
+                <option value="ruta-facil">Canuto de la Utrera and Baños de la Hedionda (easy)</option>
+                <option value="ruta-dificil">Baños, Poza de la Paloma, Torcal and Canuto (difficult)</option>
+                <option value="ruta-moderada">Baños de la Hedionda, Molino Cancón and Canuto de la Utrera (moderate)</option>
+              </select>
+            </div>
+            <div class="cal" role="group" aria-labelledby="cal-t">
+              <h3 id="cal-t" class="sr-only">Calendar</h3>
+              <div class="cal-nav">
+                <button type="button" id="r-mes-ant" class="cal-flecha" aria-label="Previous month"><span aria-hidden="true">‹</span></button>
+                <label for="r-mes" class="sr-only">Month</label>
+                <select id="r-mes"></select>
+                <button type="button" id="r-mes-sig" class="cal-flecha" aria-label="Next month"><span aria-hidden="true">›</span></button>
+              </div>
+              <table class="cal-tabla">
+                <thead><tr><th scope="col"><abbr title="Monday">M</abbr></th><th scope="col"><abbr title="Tuesday">T</abbr></th><th scope="col"><abbr title="Wednesday">W</abbr></th><th scope="col"><abbr title="Thursday">T</abbr></th><th scope="col"><abbr title="Friday">F</abbr></th><th scope="col"><abbr title="Saturday">S</abbr></th><th scope="col"><abbr title="Sunday">S</abbr></th></tr></thead>
+                <tbody id="cal-dias"></tbody>
+              </table>
+              <ul class="cal-leyenda" aria-label="Key">
+                <li><span class="mk mk-libre" aria-hidden="true"></span>Available</li>
+                <li><span class="mk mk-completa" aria-hidden="true"></span>Full</li>
+                <li><span class="mk mk-no" aria-hidden="true"></span>Not available</li>
+              </ul>
+              <p id="cal-estado" class="cal-estado" role="status" aria-live="polite"></p>
+            </div>
+          </div>
+
+          <form id="r-form" class="reserva-form" novalidate hidden>
+            <h3 id="r-form-t" tabindex="-1">Your request</h3>
+            <dl id="r-resumen" class="r-resumen"></dl>
+            <p class="r-uso">We only ask for these details to reply to your request and agree the date with you. Sending a request does not confirm a place.</p>
+            <div id="r-errores" class="r-errores" tabindex="-1" hidden>
+              <p><strong>Please check the following:</strong></p>
+              <ul></ul>
+            </div>
+            <input type="hidden" name="fecha" id="r-fecha">
+            <div class="trampa" aria-hidden="true"><label for="r-web">Do not fill in this field</label><input type="text" id="r-web" name="web" tabindex="-1" autocomplete="off"></div>
+            
+            <div class="campo">
+              <label for="r-nombre">Full name</label>
+              <input id="r-nombre" name="nombre" type="text" autocomplete="name" maxlength="120" required aria-describedby="err-nombre">
+              <p class="campo-error" id="err-nombre" hidden></p>
+            </div>
+            
+            <div class="campo">
+              <label for="r-email">Email</label>
+              <input id="r-email" name="email" type="email" autocomplete="email" inputmode="email" maxlength="254" required aria-describedby="err-email">
+              <p class="campo-error" id="err-email" hidden></p>
+            </div>
+            
+            <div class="campo">
+              <label for="r-telefono">Phone</label>
+              <input id="r-telefono" name="telefono" type="tel" autocomplete="tel" inputmode="tel" maxlength="25" required aria-describedby="err-telefono">
+              <p class="campo-error" id="err-telefono" hidden></p>
+            </div>
+            
+            <div class="campo">
+              <label for="r-participantes">Number of participants</label>
+              <input id="r-participantes" name="participantes" type="number" inputmode="numeric" min="1" step="1" value="1" required aria-describedby="err-participantes">
+              <p class="campo-error" id="err-participantes" hidden></p>
+            </div>
+            
+            <div class="campo">
+              <label for="r-comentarios">Comments <span class="opcional">(optional)</span></label>
+              <p class="campo-ayuda" id="ayuda-comentarios">For example, questions about the route.</p>
+              <textarea id="r-comentarios" name="comentarios" rows="4" maxlength="1000" aria-describedby="ayuda-comentarios err-comentarios"></textarea>
+              <p class="campo-error" id="err-comentarios" hidden></p>
+            </div>
+            
+            <p id="r-aviso" class="r-aviso" hidden>Sending requests is not active yet.</p>
+            <button type="submit" id="r-enviar" class="boton">Send request</button>
+          </form>
+
+          <div id="r-exito" class="r-exito" tabindex="-1" role="status" hidden>
+            <h3>Request sent</h3>
+            <p data-exito-detalle></p>
+            <p>This does not confirm your place: the request will be reviewed by the team, who will get back to you.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="pie">
+    <div class="envoltura">
+      <p><strong>Canuto de la Utrera Tours</strong> · Sierra de la Utrera · Casares and Manilva, Málaga</p>
+      <p>Project in development. Route data taken from public Wikiloc tracks for reference.</p>
+      <p><a class="pie-idioma" href="index.html" hreflang="es" lang="es">Español</a></p>
+    </div>
+  </footer>
+  <dialog class="visor" id="visor" aria-labelledby="visor-pie">
+    <figure class="visor-figura">
+      <img id="visor-img" src="data:," alt="">
+      <figcaption><span id="visor-pie"></span> <span class="visor-cuenta" id="visor-cuenta"></span></figcaption>
+    </figure>
+    <button type="button" class="visor-btn visor-ant" data-visor="ant" aria-label="Previous photo"><span aria-hidden="true">‹</span></button>
+    <button type="button" class="visor-btn visor-sig" data-visor="sig" aria-label="Next photo"><span aria-hidden="true">›</span></button>
+    <button type="button" class="visor-btn visor-cerrar" data-visor="cerrar" aria-label="Close"><span aria-hidden="true">×</span></button>
+  </dialog>
+  <script id="datos-reservas" type="application/json">{"idioma":"en","locale":"en-GB","textos":{"plaza":"place","plazas":"places","disponible":"available","completa":"Full","noDisponible":"Not available","sinFechas":"There are no open dates for this route yet.","sinFechasMes":"No dates available this month.","irProxima":"Go to the next available date","fechaMes":"date available this month.","fechasMes":"dates available this month.","ruta":"Route","fecha":"Date","plazasLibres":"Places left","enviando":"Sending…","enviar":"Send request","persona":"person","personas":"people","errorEnvio":"The request could not be sent. Check your connection and try again."},"rutas":[{"id":"ruta-facil","nombre":"Canuto de la Utrera and Baños de la Hedionda"},{"id":"ruta-dificil","nombre":"Baños, Poza de la Paloma, Torcal and Canuto"},{"id":"ruta-moderada","nombre":"Baños de la Hedionda, Molino Cancón and Canuto de la Utrera"}],"calendario":{"desde":2026,"hasta":2027},"disponibilidad":[],"envio":{"endpoint":null},"privacidad":{"url":null}}</script>
+  <script id="datos-app" type="application/json">{"de":"of","offline":"You are offline: the map needs an internet connection to load. The reference points are listed here."}</script>
+  <script src="reservas-validacion.js" defer></script>
+  <script src="reservas.js" defer></script>
+  <script src="vendor/leaflet/leaflet.js" defer></script>
+  <script src="app.js" defer></script>
+</body>
+</html>

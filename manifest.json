@@ -1,0 +1,29 @@
+{
+  "name": "Canuto de la Utrera Tours",
+  "short_name": "Canuto Tours",
+  "description": "Proyecto de turismo activo con rutas guiadas por el entorno natural y geológico de la Sierra de la Utrera, entre Casares y Manilva (Málaga).",
+  "lang": "es",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#101b15",
+  "theme_color": "#101b15",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

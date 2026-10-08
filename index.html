@@ -1,0 +1,412 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Canuto de la Utrera Tours · Rutas guiadas por la Sierra de la Utrera</title>
+  <meta name="description" content="Proyecto de turismo activo con rutas guiadas por el entorno natural y geológico de la Sierra de la Utrera, entre Casares y Manilva (Málaga).">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+  <meta property="og:locale:alternate" content="en_GB">
+  <meta property="og:site_name" content="Canuto de la Utrera Tours">
+  <meta property="og:title" content="Canuto de la Utrera Tours · Rutas guiadas por la Sierra de la Utrera">
+  <meta property="og:description" content="Proyecto de turismo activo con rutas guiadas por el entorno natural y geológico de la Sierra de la Utrera, entre Casares y Manilva (Málaga).">
+  <link rel="alternate" hreflang="es" href="index.html">
+  <link rel="alternate" hreflang="en" href="en.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="theme-color" content="#101b15">
+  <meta name="color-scheme" content="light dark">
+  <script>try{var t=localStorage.getItem("tema");if(t==="claro"||t==="oscuro")document.documentElement.dataset.tema=t}catch(e){}</script>
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="favicon-180.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Figtree:wght@400;600;700&display=swap">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="vendor/leaflet/leaflet.css">
+</head>
+<body>
+  <a class="saltar" href="#contenido">Saltar al contenido</a>
+
+  <header class="cabecera">
+    <div class="envoltura cabecera-in">
+      <a class="marca" href="#inicio"><img src="img/marca-clara.png" alt="" width="44" height="37"><span>Canuto de la Utrera Tours</span></a>
+      <nav aria-label="Principal">
+        <ul>
+          <li><a href="#rutas">Rutas</a></li>
+          <li><a href="#mapa">Mapa</a></li>
+          <li><a href="#entorno">Entorno</a></li>
+          <li><a href="#naturaleza">Naturaleza</a></li>
+          <li><a href="#preguntas">Preguntas</a></li>
+          <li><a href="#reservas">Solicitar fecha</a></li>
+        </ul>
+      </nav>
+      <button type="button" class="tema" data-tema aria-pressed="false" hidden><span class="sr-only">Modo oscuro</span><svg class="tema-sol" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg><svg class="tema-luna" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"/></svg></button>
+      <a class="idioma" href="en.html" hreflang="en" lang="en" aria-label="Read this page in English"><span aria-hidden="true">EN</span></a>
+    </div>
+  </header>
+
+  <main id="contenido" tabindex="-1">
+    <section class="portada" id="inicio" aria-labelledby="inicio-t">
+      <div class="envoltura portada-in">
+        <div class="portada-texto">
+          <img class="portada-logo" src="img/logo-claro.png" alt="Logotipo de Canuto de la Utrera Tours" width="640" height="661">
+          <p class="antetitulo">Sierra de la Utrera · Casares y Manilva, Málaga</p>
+          <h1 id="inicio-t">Rutas guiadas entre roca caliza, agua y vegetación</h1>
+          <p class="entradilla">Canuto de la Utrera Tours es un proyecto de turismo activo en preparación. Su propuesta: recorrer a pie, con guía, el paisaje kárstico de la Sierra de la Utrera, sus canutos y su entorno.</p>
+          <p class="estado">Proyecto en desarrollo</p>
+          <p class="portada-acciones"><a class="boton boton-claro" href="#rutas">Ver las rutas</a><a class="boton boton-borde" href="#reservas">Consultar fechas</a></p>
+        </div>
+        <div class="portada-fotos">
+          <figure class="pf pf-1"><img src="img/sendero-canuto.jpg" srcset="img/sendero-canuto-800.jpg 800w, img/sendero-canuto.jpg 1600w" sizes="(min-width: 60rem) 34rem, 100vw" alt="Sendero entre vegetación que se adentra en un barranco de paredes calizas" loading="eager" decoding="async"></figure>
+          <figure class="pf pf-2"><img src="img/barranco.jpg" srcset="img/barranco-800.jpg 800w, img/barranco.jpg 1600w" sizes="(min-width: 60rem) 17rem, 1px" alt="Paredes de roca caliza que se cierran entre árboles, formando un barranco" loading="eager" decoding="async"></figure>
+          <figure class="pf pf-3"><img src="img/agua-turquesa.jpg" srcset="img/agua-turquesa-800.jpg 800w, img/agua-turquesa.jpg 1600w" sizes="(min-width: 60rem) 17rem, 1px" alt="Agua de tono turquesa que corre entre losas de piedra y cañas" loading="eager" decoding="async"></figure>
+        </div>
+      </div>
+      <svg class="estratos" viewBox="0 0 1200 360" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+      <path class="e1" d="M0 120 L90 96 L170 128 L260 82 L340 110 L430 70 L520 104 L600 64 L700 98 L790 58 L880 92 L980 60 L1080 96 L1200 72 V360 H0Z"/>
+      <path class="e2" d="M0 176 L110 150 L200 182 L300 140 L400 170 L500 132 L610 166 L720 128 L820 160 L930 126 L1040 158 L1200 132 V360 H0Z"/>
+      <path class="e3" d="M0 232 L120 210 L240 238 L360 204 L480 232 L600 200 L720 228 L840 198 L960 226 L1080 202 L1200 222 V360 H0Z"/>
+      <path class="e4" d="M0 286 C200 268 340 300 520 284 S860 266 1000 286 S1140 296 1200 288 V360 H0Z"/>
+      <path class="agua" d="M0 330 C150 318 300 340 450 328 S750 316 900 330 S1100 342 1200 326 V360 H0Z"/>
+    </svg>
+    </section>
+
+    <section class="seccion" id="rutas" aria-labelledby="rutas-t">
+      <div class="envoltura">
+        <p class="kicker">Dos propuestas y una alternativa</p>
+        <h2 id="rutas-t">Rutas propuestas</h2>
+        <p class="aviso">Las cifras de cada ruta proceden de tracks publicados en Wikiloc. Son mediciones registradas por quien grabó el recorrido, no la duración de una actividad guiada, y deben comprobarse sobre el terreno antes de ofrecer la ruta.</p>
+        <div class="rutas">
+      <article class="ruta ruta-facil" id="ruta-facil" aria-labelledby="ruta-facil-t">
+        <figure class="ruta-foto"><img src="img/poza.jpg" srcset="img/poza-800.jpg 800w, img/poza.jpg 1600w" sizes="(min-width: 56rem) 36rem, 100vw" alt="Poza de agua clara al pie de paredes de roca cubiertas de vegetación" loading="lazy" decoding="async"></figure>
+        <div class="ruta-cuerpo">
+        <div class="ruta-cab">
+          <p class="ruta-etiqueta">Propuesta fácil</p>
+          <h3 id="ruta-facil-t">Canuto de la Utrera y Baños de la Hedionda</h3>
+          <p class="nivel nivel-facil"><span class="nivel-marcas" aria-hidden="true"><span class="on"></span><span class=""></span><span class=""></span></span>Wikiloc: Fácil</p>
+        </div>
+        <p class="ruta-resumen">Recorrido corto de ida y vuelta por el tramo frondoso del Canuto, regresando por el mismo camino. El track se acerca a los Baños de la Hedionda.</p>
+        <dl class="ruta-datos">
+          <div><dt>Distancia del track</dt><dd>3,63 km</dd></div>
+          <div><dt>Desnivel positivo</dt><dd>163 m</dd></div>
+          <div><dt>Tipo</dt><dd>Ida y vuelta</dd></div>
+          <div><dt>En movimiento (registrado)</dt><dd>1 h 13 min</dd></div>
+          <div><dt>Total (registrado)</dt><dd>2 h 28 min</dd></div>
+        </dl>
+        <ul class="ruta-notas"><li>La visita al interior de los Baños de la Hedionda o el baño en sus aguas no forman parte de la propuesta: las condiciones de acceso no están verificadas.</li></ul>
+        <p class="ruta-fuente"><a href="https://es.wikiloc.com/rutas-senderismo/canuto-de-la-utrera-y-banos-de-la-hedionda-casares-malaga-23-05-2021-73880812" rel="noopener" target="_blank" hreflang="es">Track en Wikiloc: Canuto de la Utrera y Baños de la Hedionda<span class="sr-only"> (abre en una pestaña nueva)</span></a></p>
+        </div>
+      </article>
+      <article class="ruta ruta-dificil" id="ruta-dificil" aria-labelledby="ruta-dificil-t">
+        <figure class="ruta-foto"><img src="img/paredes-karsticas.jpg" srcset="img/paredes-karsticas-800.jpg 800w, img/paredes-karsticas.jpg 1600w" sizes="(min-width: 56rem) 36rem, 100vw" alt="Paredes de roca caliza agrietadas y con oquedades, vistas desde lo alto" loading="lazy" decoding="async"></figure>
+        <div class="ruta-cuerpo">
+        <div class="ruta-cab">
+          <p class="ruta-etiqueta">Propuesta difícil</p>
+          <h3 id="ruta-dificil-t">Baños, Poza de la Paloma, Torcal y Canuto</h3>
+          <p class="nivel nivel-dificil"><span class="nivel-marcas" aria-hidden="true"><span class="on"></span><span class="on"></span><span class="on"></span></span>Wikiloc: Difícil</p>
+        </div>
+        <p class="ruta-resumen">Ruta circular larga que enlaza los Baños de la Hedionda, la Poza de la Paloma y el Torcal de Utrera, y regresa por el Canuto de la Utrera.</p>
+        <dl class="ruta-datos">
+          <div><dt>Distancia del track</dt><dd>14,11 km</dd></div>
+          <div><dt>Desnivel positivo</dt><dd>476 m</dd></div>
+          <div><dt>Tipo</dt><dd>Circular</dd></div>
+          <div><dt>En movimiento (registrado)</dt><dd>5 h 15 min</dd></div>
+          <div><dt>Total (registrado)</dt><dd>7 h 51 min</dd></div>
+        </dl>
+        <ul class="ruta-notas"><li>La descripción del track menciona terreno rocoso, trepadas y pasos que requieren cuidado.</li><li>Un comentario en Wikiloc de agosto de 2025 indicaba que en esa fecha el sendero se perdía en varios puntos y había zarzas. El estado actual del recorrido no está comprobado.</li></ul>
+        <p class="ruta-fuente"><a href="https://es.wikiloc.com/rutas-senderismo/banos-la-hedionda-poza-de-la-paloma-torcal-de-utrera-y-vuelta-por-canuto-de-utrera-en-casares-46228989" rel="noopener" target="_blank" hreflang="es">Track en Wikiloc: Baños la Hedionda, Poza de la Paloma, Torcal de Utrera y vuelta por Canuto de Utrera<span class="sr-only"> (abre en una pestaña nueva)</span></a></p>
+        </div>
+      </article>
+        </div>
+        <div class="alternativas">
+          <h3 class="alt-t">También en estudio</h3>
+      <article class="ruta ruta-moderada ruta-alt" id="ruta-moderada" aria-labelledby="ruta-moderada-t">
+        <figure class="ruta-foto"><img src="img/edificio-camino.jpg" srcset="img/edificio-camino-800.jpg 800w, img/edificio-camino.jpg 1600w" sizes="(min-width: 56rem) 36rem, 100vw" alt="Pequeño edificio blanco junto a un camino de tierra, con la sierra al fondo" loading="lazy" decoding="async"></figure>
+        <div class="ruta-cuerpo">
+        <div class="ruta-cab">
+          <p class="ruta-etiqueta">Ruta alternativa moderada</p>
+          <h3 id="ruta-moderada-t">Baños de la Hedionda, Molino Cancón y Canuto de la Utrera</h3>
+          <p class="nivel nivel-moderada"><span class="nivel-marcas" aria-hidden="true"><span class="on"></span><span class="on"></span><span class=""></span></span>Wikiloc: Moderada</p>
+        </div>
+        <p class="ruta-resumen">Circular de longitud intermedia entre las dos propuestas anteriores, con paso por el Molino Cancón y el Canuto de la Utrera.</p>
+        <dl class="ruta-datos">
+          <div><dt>Distancia del track</dt><dd>9,74 km</dd></div>
+          <div><dt>Desnivel positivo</dt><dd>352 m</dd></div>
+          <div><dt>Tipo</dt><dd>Circular</dd></div>
+          <div><dt>En movimiento (registrado)</dt><dd>2 h 23 min</dd></div>
+          <div><dt>Total (registrado)</dt><dd>3 h 24 min</dd></div>
+        </dl>
+        
+        <p class="ruta-fuente"><a href="https://es.wikiloc.com/rutas-senderismo/circular-banos-de-la-hedionda-molino-cancon-canuto-de-la-utrera-casares-malaga-10-12-2018-31274922" rel="noopener" target="_blank" hreflang="es">Track en Wikiloc: Circular Baños de la Hedionda, Molino Cancón, Canuto de la Utrera<span class="sr-only"> (abre en una pestaña nueva)</span></a></p>
+        </div>
+      </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="seccion seccion-mapa" id="mapa" aria-labelledby="mapa-t">
+      <div class="envoltura">
+        <p class="kicker">Dónde está</p>
+        <h2 id="mapa-t">Mapa de la zona</h2>
+        <p class="entradilla-sec">Lugares de referencia de los recorridos. La posición es aproximada; el trazado exacto de cada ruta está en su track de Wikiloc.</p>
+        <div class="mapa-in">
+          <div class="mapa-lienzo-caja">
+            <div id="mapa-lienzo" class="mapa-lienzo" data-mapa hidden></div>
+            <p class="mapa-aviso" id="mapa-aviso" role="status">Para ver el mapa hay que activar JavaScript. Los lugares de referencia están en la lista.</p>
+          </div>
+          <div class="mapa-lista">
+            <h3>Lugares del mapa</h3>
+            <ol>
+              <li class="mp-agua"><span class="mapa-num" aria-hidden="true">1</span><div><strong lang="es">Baños de la Hedionda</strong><span>Fuente de aguas sulfurosas. Aparece en los tres tracks.</span>
+                <span class="mapa-acciones"><button type="button" class="enlace" data-mapa-punto="0" hidden>Ver en el mapa</button> <a href="https://www.komoot.com/highlight/4078869" rel="noopener" target="_blank">Ver en komoot<span class="sr-only"> (abre en una pestaña nueva)</span></a></span></div></li>
+              <li class="mp-canuto"><span class="mapa-num" aria-hidden="true">2</span><div><strong lang="es">Canuto de la Utrera</strong><span>Tramo frondoso y encajado entre la roca.</span>
+                <span class="mapa-acciones"><button type="button" class="enlace" data-mapa-punto="1" hidden>Ver en el mapa</button> <a href="https://www.komoot.com/highlight/4354990" rel="noopener" target="_blank">Ver en komoot<span class="sr-only"> (abre en una pestaña nueva)</span></a></span></div></li>
+              <li class="mp-roca"><span class="mapa-num" aria-hidden="true">3</span><div><strong lang="es">Torcal de Utrera</strong><span>Roca caliza modelada por el agua. Ruta difícil.</span>
+                <span class="mapa-acciones"><button type="button" class="enlace" data-mapa-punto="2" hidden>Ver en el mapa</button> <a href="https://www.komoot.com/highlight/4078865" rel="noopener" target="_blank">Ver en komoot<span class="sr-only"> (abre en una pestaña nueva)</span></a></span></div></li>
+            </ol>
+            <p class="mapa-nota">La Poza de la Paloma y el Molino Cancón no están en el mapa: no hemos encontrado coordenadas publicadas verificadas.</p>
+            <p class="mapa-nota"><a href="https://www.komoot.com/highlight/4354990" rel="noopener" target="_blank">Coordenadas: puntos destacados de komoot<span class="sr-only"> (abre en una pestaña nueva)</span></a> · © <a href="https://www.openstreetmap.org/copyright" rel="noopener" target="_blank">OpenStreetMap</a></p>
+          </div>
+        </div>
+      </div>
+      <script id="datos-mapa" type="application/json">{"centro":[36.3952,-5.2695],"zoom":15,"region":"Mapa interactivo de la Sierra de la Utrera","puntos":[{"nombre":"Baños de la Hedionda","lat":36.39648,"lon":-5.26131,"tipo":"agua","texto":"Fuente de aguas sulfurosas. Aparece en los tres tracks."},{"nombre":"Canuto de la Utrera","lat":36.393805,"lon":-5.26955,"tipo":"canuto","texto":"Tramo frondoso y encajado entre la roca."},{"nombre":"Torcal de Utrera","lat":36.396833,"lon":-5.278472,"tipo":"roca","texto":"Roca caliza modelada por el agua. Ruta difícil."}]}</script>
+    </section>
+
+    <section class="seccion seccion-entorno" id="entorno" aria-labelledby="entorno-t">
+      <div class="envoltura entorno-in">
+        <div class="entorno-texto">
+          <p class="kicker">Roca, agua y vegetación</p>
+          <h2 id="entorno-t">El entorno</h2>
+          <p>La Sierra de la Utrera es un relieve de roca caliza cuyo paisaje kárstico es fruto de la acción del agua sobre la piedra.</p>
+          <p>Entre la roca se abre el Canuto de la Utrera, un tramo encajado y frondoso en el que la vegetación contrasta con la piedra desnuda de los alrededores. Cerca se encuentran los Baños de la Hedionda, un enclave ligado al agua que da nombre a varios de los recorridos.</p>
+          <p>Las rutas propuestas buscan observar este paisaje con calma: cómo cambia la roca, por dónde corre el agua y qué plantas aprovechan cada rincón.</p>
+        </div>
+        <div class="entorno-lugares">
+          <h3>Lugares de los recorridos</h3>
+          <ul>
+            <li><strong lang="es">Canuto de la Utrera</strong><span>Tramo frondoso y encajado entre la roca.</span></li>
+            <li><strong lang="es">Torcal de Utrera</strong><span>Zona de roca caliza modelada por el agua.</span></li>
+            <li><strong lang="es">Poza de la Paloma</strong><span>Punto del recorrido circular largo.</span></li>
+            <li><strong lang="es">Baños de la Hedionda</strong><span>Enclave ligado al agua que aparece en los tres tracks de referencia.</span></li>
+            <li><strong lang="es">Molino Cancón</strong><span>Punto de paso de la ruta alternativa moderada.</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="envoltura"><h3 class="galeria-t">Imágenes del entorno</h3><div class="galeria">
+        <figure class="gal gal-1"><a class="gal-enlace" href="img/banos-boveda.jpg" data-lightbox data-pie="Baños de la Hedionda" data-alt="Bóveda de piedra con franjas de ladrillo sobre una lámina de agua turquesa"><span class="sr-only">Ampliar foto: Baños de la Hedionda</span><img src="img/banos-boveda.jpg" srcset="img/banos-boveda-800.jpg 800w, img/banos-boveda.jpg 1600w" sizes="(min-width: 48rem) 24rem, 50vw" alt="Bóveda de piedra con franjas de ladrillo sobre una lámina de agua turquesa" loading="lazy" decoding="async"></a><figcaption>Baños de la Hedionda</figcaption></figure>
+        <figure class="gal gal-2"><a class="gal-enlace" href="img/cueva.jpg" data-lightbox data-pie="Roca caliza" data-alt="Pared de roca caliza con la boca de una cueva, rodeada de matorral"><span class="sr-only">Ampliar foto: Roca caliza</span><img src="img/cueva.jpg" srcset="img/cueva-800.jpg 800w, img/cueva.jpg 1600w" sizes="(min-width: 48rem) 24rem, 50vw" alt="Pared de roca caliza con la boca de una cueva, rodeada de matorral" loading="lazy" decoding="async"></a><figcaption>Roca caliza</figcaption></figure>
+        <figure class="gal gal-3"><a class="gal-enlace" href="img/prado-farallon.jpg" data-lightbox data-pie="Al pie de la sierra" data-alt="Prado verde cercado por muros al pie de un farallón de caliza"><span class="sr-only">Ampliar foto: Al pie de la sierra</span><img src="img/prado-farallon.jpg" srcset="img/prado-farallon-800.jpg 800w, img/prado-farallon.jpg 1600w" sizes="(min-width: 48rem) 24rem, 50vw" alt="Prado verde cercado por muros al pie de un farallón de caliza" loading="lazy" decoding="async"></a><figcaption>Al pie de la sierra</figcaption></figure>
+        <figure class="gal gal-4"><a class="gal-enlace" href="img/poza.jpg" data-lightbox data-pie="Agua" data-alt="Poza de agua clara al pie de paredes de roca cubiertas de vegetación"><span class="sr-only">Ampliar foto: Agua</span><img src="img/poza.jpg" srcset="img/poza-800.jpg 800w, img/poza.jpg 1600w" sizes="(min-width: 48rem) 24rem, 50vw" alt="Poza de agua clara al pie de paredes de roca cubiertas de vegetación" loading="lazy" decoding="async"></a><figcaption>Agua</figcaption></figure>
+        <figure class="gal gal-5"><a class="gal-enlace" href="img/paredes-karsticas.jpg" data-lightbox data-pie="Paisaje kárstico" data-alt="Paredes de roca caliza agrietadas y con oquedades, vistas desde lo alto"><span class="sr-only">Ampliar foto: Paisaje kárstico</span><img src="img/paredes-karsticas.jpg" srcset="img/paredes-karsticas-800.jpg 800w, img/paredes-karsticas.jpg 1600w" sizes="(min-width: 48rem) 24rem, 50vw" alt="Paredes de roca caliza agrietadas y con oquedades, vistas desde lo alto" loading="lazy" decoding="async"></a><figcaption>Paisaje kárstico</figcaption></figure>
+        <figure class="gal gal-6"><a class="gal-enlace" href="img/agua-turquesa.jpg" data-lightbox data-pie="Agua y vegetación de ribera" data-alt="Agua de tono turquesa que corre entre losas de piedra y cañas"><span class="sr-only">Ampliar foto: Agua y vegetación de ribera</span><img src="img/agua-turquesa.jpg" srcset="img/agua-turquesa-800.jpg 800w, img/agua-turquesa.jpg 1600w" sizes="(min-width: 48rem) 24rem, 50vw" alt="Agua de tono turquesa que corre entre losas de piedra y cañas" loading="lazy" decoding="async"></a><figcaption>Agua y vegetación de ribera</figcaption></figure>
+      </div></div>
+    </section>
+
+
+    <section class="seccion seccion-naturaleza" id="naturaleza" aria-labelledby="naturaleza-t">
+      <div class="envoltura">
+        <p class="kicker">Geología, agua, flora y fauna</p>
+        <h2 id="naturaleza-t">La Sierra de la Utrera</h2>
+        <p class="entradilla-sec">Un macizo de caliza modelado por el agua, con canutos, una fuente sulfurosa y aves que crían en sus paredes. Esto es lo que recogen las fuentes consultadas.</p>
+        <div class="naturaleza">
+          <article class="nat nat-geologia" aria-labelledby="nat-geologia-t">
+            <h3 id="nat-geologia-t">Geología</h3>
+            <p>La sierra está formada sobre todo por calizas nodulosas y oolíticas originadas en el Jurásico. Es una ventana tectónica: un afloramiento rodeado de unidades geológicas de las Béticas Internas.</p>
+            <p>La disolución de la caliza por el agua ha creado un laberinto de relieve kárstico que el Ayuntamiento de Casares compara con el Torcal de Antequera.</p>
+            <p class="nat-fuentes">Fuentes: <a href="https://malagapedia.wikanda.es/wiki/Canuto_de_Utrera" rel="noopener" target="_blank">Malagapedia: Canuto de Utrera<span class="sr-only"> (abre en una pestaña nueva)</span></a> · <a href="https://www.casares.es/turismo/naturaleza-2/" rel="noopener" target="_blank">Ayuntamiento de Casares: Naturaleza<span class="sr-only"> (abre en una pestaña nueva)</span></a></p>
+          </article>
+          <article class="nat nat-agua" aria-labelledby="nat-agua-t">
+            <h3 id="nat-agua-t">Agua</h3>
+            <p>La sierra está cortada por tres valles encajados y paralelos a la costa, llamados canutos. El arroyo de los Molinos y el Albarrán forman el río Manilva.</p>
+            <p>Los Baños de la Hedionda deben su nombre al olor de sus aguas sulfurosas. Según el Ayuntamiento de Casares, la canalización de la fuente es de origen romano, se reconstruyó en época islámica y conserva obras del siglo XVII al XX.</p>
+            <p class="nat-fuentes">Fuentes: <a href="https://malagapedia.wikanda.es/wiki/Canuto_de_Utrera" rel="noopener" target="_blank">Malagapedia: Canuto de Utrera<span class="sr-only"> (abre en una pestaña nueva)</span></a> · <a href="https://www.casares.es/en/tourism/what-to-see-in-casares/hedionda-baths/" rel="noopener" target="_blank">Ayuntamiento de Casares: Baños de la Hedionda<span class="sr-only"> (abre en una pestaña nueva)</span></a></p>
+          </article>
+          <article class="nat nat-flora" aria-labelledby="nat-flora-t">
+            <h3 id="nat-flora-t">Flora</h3>
+            <p>En la sierra crece un sabinar costero sobre calizas, descrito como el único conocido de este tipo, y algarrobales naturales, escasos en Andalucía y en la costa mediterránea.</p>
+            <p class="nat-fuentes">Fuentes: <a href="https://malagapedia.wikanda.es/wiki/Canuto_de_Utrera" rel="noopener" target="_blank">Malagapedia: Canuto de Utrera<span class="sr-only"> (abre en una pestaña nueva)</span></a></p>
+          </article>
+          <article class="nat nat-fauna" aria-labelledby="nat-fauna-t">
+            <h3 id="nat-fauna-t">Fauna</h3>
+            <p>En las paredes de roca vive el águila perdicera, una de las especies más amenazadas del Mediterráneo, junto a otras aves rupícolas como el alimoche, el búho real, el avión roquero y la collalba negra.</p>
+            <p>En el río se citan la nutria y el martín pescador, y en las cavidades, murciélagos como los rinolofos y el murciélago troglodita.</p>
+            <p class="nat-fuentes">Fuentes: <a href="https://www.casares.es/turismo/naturaleza-2/" rel="noopener" target="_blank">Ayuntamiento de Casares: Naturaleza<span class="sr-only"> (abre en una pestaña nueva)</span></a> · <a href="https://malagapedia.wikanda.es/wiki/Canuto_de_Utrera" rel="noopener" target="_blank">Malagapedia: Canuto de Utrera<span class="sr-only"> (abre en una pestaña nueva)</span></a></p>
+          </article>
+        </div>
+        <div class="cuidado">
+          <h3>Cómo cuidar la sierra</h3>
+          <ul>
+            <li>Ir por el sendero y no atajar por fincas privadas.</li>
+            <li>Mantener la distancia y el silencio cerca de los cortados donde crían las aves.</li>
+            <li>Llevarse de vuelta toda la basura.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="seccion" id="antes" aria-labelledby="antes-t">
+      <div class="envoltura">
+        <p class="kicker">Información práctica</p>
+        <h2 id="antes-t">Antes de salir</h2>
+        <p class="entradilla-sec">Estas rutas son propuestas en preparación. Antes de cualquier actividad hay que confirmar:</p>
+        <ol class="antes">
+          <li><h3>El recorrido</h3><p>El trazado exacto y el estado del sendero, comprobados sobre el terreno.</p></li>
+          <li><h3>Los tiempos</h3><p>Los tiempos de Wikiloc son de referencia; la duración de una salida guiada puede ser distinta.</p></li>
+          <li><h3>Las condiciones</h3><p>El tiempo previsto, el estado del terreno y si el nivel de la ruta encaja con cada persona.</p></li>
+          <li><h3>Los accesos</h3><p>Las condiciones de acceso a los Baños de la Hedionda y a cada punto del recorrido.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="seccion seccion-faq" id="preguntas" aria-labelledby="preguntas-t">
+      <div class="envoltura">
+        <p class="kicker">Dudas</p>
+        <h2 id="preguntas-t">Preguntas frecuentes</h2>
+        <div class="faq">
+          <details>
+            <summary>¿Qué dificultad tienen las rutas?</summary>
+            <div class="faq-r"><p>Usamos la clasificación de los tracks de Wikiloc. La ruta difícil incluye terreno rocoso, trepadas y pasos que requieren cuidado.</p><ul class="faq-rutas"><li><a href="#ruta-facil">Canuto de la Utrera y Baños de la Hedionda</a>: Fácil · 3,63 km · 163 m</li><li><a href="#ruta-dificil">Baños, Poza de la Paloma, Torcal y Canuto</a>: Difícil · 14,11 km · 476 m</li><li><a href="#ruta-moderada">Baños de la Hedionda, Molino Cancón y Canuto de la Utrera</a>: Moderada · 9,74 km · 352 m</li></ul></div>
+          </details>
+          <details>
+            <summary>¿Cuánto dura cada ruta?</summary>
+            <div class="faq-r"><p>Estos son los tiempos que registró en Wikiloc quien grabó cada track. La duración de una salida guiada todavía no está definida y puede ser distinta.</p><ul class="faq-rutas"><li><a href="#ruta-facil">Canuto de la Utrera y Baños de la Hedionda</a>: en movimiento (registrado) 1 h 13 min · total (registrado) 2 h 28 min</li><li><a href="#ruta-dificil">Baños, Poza de la Paloma, Torcal y Canuto</a>: en movimiento (registrado) 5 h 15 min · total (registrado) 7 h 51 min</li><li><a href="#ruta-moderada">Baños de la Hedionda, Molino Cancón y Canuto de la Utrera</a>: en movimiento (registrado) 2 h 23 min · total (registrado) 3 h 24 min</li></ul></div>
+          </details>
+          <details>
+            <summary>¿Cuál es la mejor época para ir?</summary>
+            <div class="faq-r"><p>El proyecto aún no ha fijado temporadas. Las fechas abiertas aparecerán en el calendario, y antes de cada salida se revisan la previsión del tiempo y el estado del sendero.</p></div>
+          </details>
+          <details>
+            <summary>¿Qué hay que llevar?</summary>
+            <div class="faq-r"><p>La lista de material se confirmará para cada actividad. Como en cualquier ruta a pie por monte: calzado con buena suela, agua, protección solar y ropa adecuada a la previsión. En la ruta difícil conviene llevar las manos libres por las trepadas.</p></div>
+          </details>
+          <details>
+            <summary>¿Se puede entrar o bañarse en los Baños de la Hedionda?</summary>
+            <div class="faq-r"><p>No forma parte de las rutas propuestas, porque las condiciones de acceso no están verificadas.</p></div>
+          </details>
+          <details>
+            <summary>¿Cuánto cuesta y cómo se reserva?</summary>
+            <div class="faq-r"><p>Los precios todavía no están definidos. Cuando se abran plazas, se podrá solicitar una fecha desde el calendario; enviar la solicitud no confirma la plaza.</p></div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="seccion seccion-reservas" id="reservas" aria-labelledby="reservas-t">
+      <div class="envoltura">
+        <p class="kicker">Calendario 2026–2027</p>
+        <h2 id="reservas-t" tabindex="-1">Solicitar fecha</h2>
+        <p class="entradilla-sec">Elige una ruta y consulta el calendario. Solo se pueden solicitar las fechas marcadas como disponibles.</p>
+        <noscript><p class="aviso">Para consultar el calendario hay que activar JavaScript en el navegador.</p></noscript>
+        <div class="reserva" data-reservas hidden>
+          <div class="reserva-cal">
+            <div class="campo">
+              <label for="r-ruta">Ruta</label>
+              <select id="r-ruta" name="ruta">
+                <option value="ruta-facil">Canuto de la Utrera y Baños de la Hedionda (fácil)</option>
+                <option value="ruta-dificil">Baños, Poza de la Paloma, Torcal y Canuto (difícil)</option>
+                <option value="ruta-moderada">Baños de la Hedionda, Molino Cancón y Canuto de la Utrera (moderada)</option>
+              </select>
+            </div>
+            <div class="cal" role="group" aria-labelledby="cal-t">
+              <h3 id="cal-t" class="sr-only">Calendario</h3>
+              <div class="cal-nav">
+                <button type="button" id="r-mes-ant" class="cal-flecha" aria-label="Mes anterior"><span aria-hidden="true">‹</span></button>
+                <label for="r-mes" class="sr-only">Mes</label>
+                <select id="r-mes"></select>
+                <button type="button" id="r-mes-sig" class="cal-flecha" aria-label="Mes siguiente"><span aria-hidden="true">›</span></button>
+              </div>
+              <table class="cal-tabla">
+                <thead><tr><th scope="col"><abbr title="lunes">L</abbr></th><th scope="col"><abbr title="martes">M</abbr></th><th scope="col"><abbr title="miércoles">X</abbr></th><th scope="col"><abbr title="jueves">J</abbr></th><th scope="col"><abbr title="viernes">V</abbr></th><th scope="col"><abbr title="sábado">S</abbr></th><th scope="col"><abbr title="domingo">D</abbr></th></tr></thead>
+                <tbody id="cal-dias"></tbody>
+              </table>
+              <ul class="cal-leyenda" aria-label="Leyenda">
+                <li><span class="mk mk-libre" aria-hidden="true"></span>Disponible</li>
+                <li><span class="mk mk-completa" aria-hidden="true"></span>Completa</li>
+                <li><span class="mk mk-no" aria-hidden="true"></span>No disponible</li>
+              </ul>
+              <p id="cal-estado" class="cal-estado" role="status" aria-live="polite"></p>
+            </div>
+          </div>
+
+          <form id="r-form" class="reserva-form" novalidate hidden>
+            <h3 id="r-form-t" tabindex="-1">Tu solicitud</h3>
+            <dl id="r-resumen" class="r-resumen"></dl>
+            <p class="r-uso">Pedimos estos datos solo para responder a tu solicitud y acordar contigo la fecha. Enviar la solicitud no confirma la plaza.</p>
+            <div id="r-errores" class="r-errores" tabindex="-1" hidden>
+              <p><strong>Revisa estos datos:</strong></p>
+              <ul></ul>
+            </div>
+            <input type="hidden" name="fecha" id="r-fecha">
+            <div class="trampa" aria-hidden="true"><label for="r-web">No rellenes este campo</label><input type="text" id="r-web" name="web" tabindex="-1" autocomplete="off"></div>
+            
+            <div class="campo">
+              <label for="r-nombre">Nombre y apellidos</label>
+              <input id="r-nombre" name="nombre" type="text" autocomplete="name" maxlength="120" required aria-describedby="err-nombre">
+              <p class="campo-error" id="err-nombre" hidden></p>
+            </div>
+            
+            <div class="campo">
+              <label for="r-email">Correo electrónico</label>
+              <input id="r-email" name="email" type="email" autocomplete="email" inputmode="email" maxlength="254" required aria-describedby="err-email">
+              <p class="campo-error" id="err-email" hidden></p>
+            </div>
+            
+            <div class="campo">
+              <label for="r-telefono">Teléfono</label>
+              <input id="r-telefono" name="telefono" type="tel" autocomplete="tel" inputmode="tel" maxlength="25" required aria-describedby="err-telefono">
+              <p class="campo-error" id="err-telefono" hidden></p>
+            </div>
+            
+            <div class="campo">
+              <label for="r-participantes">Número de participantes</label>
+              <input id="r-participantes" name="participantes" type="number" inputmode="numeric" min="1" step="1" value="1" required aria-describedby="err-participantes">
+              <p class="campo-error" id="err-participantes" hidden></p>
+            </div>
+            
+            <div class="campo">
+              <label for="r-comentarios">Comentarios <span class="opcional">(opcional)</span></label>
+              <p class="campo-ayuda" id="ayuda-comentarios">Por ejemplo, dudas sobre la ruta.</p>
+              <textarea id="r-comentarios" name="comentarios" rows="4" maxlength="1000" aria-describedby="ayuda-comentarios err-comentarios"></textarea>
+              <p class="campo-error" id="err-comentarios" hidden></p>
+            </div>
+            
+            <p id="r-aviso" class="r-aviso" hidden>El envío de solicitudes todavía no está activo.</p>
+            <button type="submit" id="r-enviar" class="boton">Enviar solicitud</button>
+          </form>
+
+          <div id="r-exito" class="r-exito" tabindex="-1" role="status" hidden>
+            <h3>Solicitud enviada</h3>
+            <p data-exito-detalle></p>
+            <p>Esto no confirma la plaza: la solicitud queda a la espera de que el equipo la revise y te responda.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="pie">
+    <div class="envoltura">
+      <p><strong>Canuto de la Utrera Tours</strong> · Sierra de la Utrera · Casares y Manilva, Málaga</p>
+      <p>Proyecto en desarrollo. Datos de rutas tomados de tracks públicos de Wikiloc como referencia.</p>
+      <p><a class="pie-idioma" href="en.html" hreflang="en" lang="en">English</a></p>
+    </div>
+  </footer>
+  <dialog class="visor" id="visor" aria-labelledby="visor-pie">
+    <figure class="visor-figura">
+      <img id="visor-img" src="data:," alt="">
+      <figcaption><span id="visor-pie"></span> <span class="visor-cuenta" id="visor-cuenta"></span></figcaption>
+    </figure>
+    <button type="button" class="visor-btn visor-ant" data-visor="ant" aria-label="Foto anterior"><span aria-hidden="true">‹</span></button>
+    <button type="button" class="visor-btn visor-sig" data-visor="sig" aria-label="Foto siguiente"><span aria-hidden="true">›</span></button>
+    <button type="button" class="visor-btn visor-cerrar" data-visor="cerrar" aria-label="Cerrar"><span aria-hidden="true">×</span></button>
+  </dialog>
+  <script id="datos-reservas" type="application/json">{"idioma":"es","locale":"es-ES","textos":{"plaza":"plaza","plazas":"plazas","disponible":"disponible","completa":"Completa","noDisponible":"No disponible","sinFechas":"Por ahora no hay fechas abiertas para esta ruta.","sinFechasMes":"No hay fechas disponibles este mes.","irProxima":"Ir a la próxima fecha disponible","fechaMes":"fecha disponible este mes.","fechasMes":"fechas disponibles este mes.","ruta":"Ruta","fecha":"Fecha","plazasLibres":"Plazas libres","enviando":"Enviando…","enviar":"Enviar solicitud","persona":"persona","personas":"personas","errorEnvio":"No se ha podido enviar la solicitud. Revisa tu conexión e inténtalo de nuevo."},"rutas":[{"id":"ruta-facil","nombre":"Canuto de la Utrera y Baños de la Hedionda"},{"id":"ruta-dificil","nombre":"Baños, Poza de la Paloma, Torcal y Canuto"},{"id":"ruta-moderada","nombre":"Baños de la Hedionda, Molino Cancón y Canuto de la Utrera"}],"calendario":{"desde":2026,"hasta":2027},"disponibilidad":[],"envio":{"endpoint":null},"privacidad":{"url":null}}</script>
+  <script id="datos-app" type="application/json">{"de":"de","offline":"Sin conexión: el mapa necesita internet para cargar. Los lugares de referencia están en la lista."}</script>
+  <script src="reservas-validacion.js" defer></script>
+  <script src="reservas.js" defer></script>
+  <script src="vendor/leaflet/leaflet.js" defer></script>
+  <script src="app.js" defer></script>
+</body>
+</html>
