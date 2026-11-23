@@ -450,3 +450,79 @@ textarea { min-height: 6rem; resize: vertical; }
   .visor-figura { padding-bottom: 4.5rem; }
   .visor-figura img { max-height: calc(100dvh - 12rem); }
 }
+
+/* Material para tu ruta: carrusel y reserva */
+.carrusel { --gap: 1rem; --por-vista: 1; margin-top: 2rem; }
+@media (min-width: 36rem) { .carrusel { --por-vista: 2; } }
+@media (min-width: 58rem) { .carrusel { --por-vista: 3; } }
+@media (min-width: 76rem) { .carrusel { --por-vista: 4; } }
+.carrusel-barra { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .5rem 1rem; margin-bottom: .9rem; }
+.carrusel-estado { margin: 0; color: var(--texto-2); font-weight: 600; font-size: .95rem; }
+.carrusel-ctrl { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; }
+.car-btn { min-width: 48px; height: 48px; padding: 0 .9rem; border-radius: 999px; border: 1.5px solid var(--roca-osc); background: var(--campo); color: var(--titulo); font: inherit; font-weight: 700; line-height: 1; cursor: pointer; }
+.car-btn[hidden], .mr-enlace[hidden] { display: none; }
+.car-btn[data-car="ant"], .car-btn[data-car="sig"] { width: 48px; padding: 0; font-size: 1.7rem; }
+.car-btn:hover { background: var(--libre); border-color: var(--musgo); }
+.mr-enlace { display: inline-flex; align-items: center; min-height: 44px; font-weight: 700; }
+.carrusel-pista {
+  list-style: none; margin: 0; padding: .25rem .25rem 1.1rem; display: flex; gap: var(--gap);
+  overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: .25rem;
+  position: relative; overscroll-behavior-x: contain; scrollbar-width: thin; scrollbar-color: var(--roca) transparent;
+}
+.carrusel-pista:focus-visible { outline-offset: 0; }
+.prod {
+  flex: 0 0 calc((100% - (var(--por-vista) - 1) * var(--gap)) / var(--por-vista)); scroll-snap-align: start;
+  display: flex; flex-direction: column; background: var(--superficie); border-radius: 18px; overflow: hidden; box-shadow: var(--sombra);
+}
+.prod-foto { position: relative; flex: none; aspect-ratio: 1 / 1; overflow: hidden; background: #131b16; }
+.prod-foto img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; }
+.prod-foto::after { content: ""; position: absolute; inset: auto 0 0 0; height: 6px; background: var(--oliva); }
+.prod-cuerpo { display: flex; flex-direction: column; flex: 1; padding: 1.1rem 1.2rem 1.25rem; }
+.prod h3 { font-size: 1.25rem; line-height: 1.15; margin: 0 0 .2rem; min-height: 2.3em; }
+.prod-nota { margin: 0; min-height: 2.9em; line-height: 1.45; color: var(--texto-2); font-size: .92rem; }
+.prod-precio { margin: .3rem 0 .8rem; font-family: var(--serif); font-weight: 700; font-size: 1.7rem; line-height: 1.1; color: var(--titulo); font-variant-numeric: tabular-nums; }
+.prod-accion { margin-top: auto; display: grid; gap: .7rem; }
+.prod-opciones { display: grid; gap: .5rem; }
+.prod-opciones label { display: grid; gap: .2rem; font-weight: 600; font-size: .9rem; }
+.prod-opciones select { min-height: 44px; }
+.prod-reservar { width: 100%; }
+.prod-reservar[hidden] { display: none; }
+.material-nota { margin: .25rem 0 0; font-size: .9rem; color: var(--texto-2); }
+
+.material-reserva { margin-top: 2.5rem; scroll-margin-top: 1rem; }
+.material-reserva[hidden], .material-reserva [hidden] { display: none !important; }
+.mr-caja { display: grid; gap: 1.5rem; background: var(--superficie-2); border: 1px solid var(--linea); border-radius: var(--radio); padding: 1.25rem; }
+@media (min-width: 40rem) { .mr-caja { padding: 1.5rem; } }
+@media (min-width: 60rem) { .mr-caja.con-form { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 3rem; } }
+.mr-col h3, .mr-caja h3 { font-size: 1.4rem; }
+.mr-vacio { color: var(--texto-2); margin: 0; }
+.mr-lista { list-style: none; margin: 0 0 1rem; padding: 0; display: grid; gap: .6rem; }
+.mr-item { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: .35rem .75rem; align-items: center; padding: .75rem .9rem; background: var(--caliza); border-radius: var(--radio); }
+.mr-item-txt { display: grid; }
+.mr-item-nombre { font-weight: 700; }
+.mr-item-opc { font-size: .9rem; color: var(--texto-2); }
+.mr-precio { font-weight: 700; text-align: right; font-variant-numeric: tabular-nums; }
+.mr-cant { display: inline-flex; align-items: center; gap: .3rem; }
+.mr-cant button { width: 44px; height: 44px; border-radius: 50%; border: 1.5px solid var(--roca-osc); background: var(--campo); color: var(--titulo); font: inherit; font-size: 1.3rem; line-height: 1; cursor: pointer; }
+.mr-cant button:hover:not(:disabled) { background: var(--libre); border-color: var(--musgo); }
+.mr-cant button:disabled { opacity: .35; cursor: not-allowed; }
+.mr-num { min-width: 2ch; text-align: center; font-weight: 700; font-variant-numeric: tabular-nums; }
+.mr-quitar { justify-self: end; }
+.mr-total { margin: 0; font-size: 1.15rem; }
+.mr-total strong { font-family: var(--serif); font-size: 1.5rem; color: var(--titulo); font-variant-numeric: tabular-nums; }
+.mr-form { align-self: start; }
+.mr-form .boton { width: 100%; }
+@media (min-width: 30rem) { .mr-form .boton { width: auto; } }
+
+/* Precio de las rutas */
+.ruta-precio { margin: .5rem 0 .9rem; color: var(--texto-2); font-weight: 600; }
+.ruta-precio strong { font-family: var(--serif); font-size: 1.9rem; line-height: 1; color: var(--titulo); font-variant-numeric: tabular-nums; margin-right: .15rem; }
+.rutas-precio-nota { margin: 1rem 0 0; max-width: 46rem; font-weight: 600; color: var(--texto); }
+
+/* Calendario visible para la fecha de la ruta (reserva de material) */
+.campo-etq { margin: 0 0 .35rem; font-weight: 600; }
+.mini-cal { width: 100%; max-width: 24rem; padding: .85rem; background: var(--campo); border: 1.5px solid var(--roca-osc); border-radius: var(--radio); }
+.mini-cal .cal-nav { margin-bottom: .5rem; }
+.mini-cal .cal-dia { max-height: 3.1rem; }
+.mini-cal .cal-estado { font-size: .95rem; }
+@media (max-width: 30rem) { .mini-cal { max-width: none; padding: .7rem .5rem; } }

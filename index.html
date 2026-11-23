@@ -39,6 +39,7 @@
           <li><a href="#entorno">Entorno</a></li>
           <li><a href="#naturaleza">Naturaleza</a></li>
           <li><a href="#preguntas">Preguntas</a></li>
+          <li><a href="#material">Material</a></li>
           <li><a href="#reservas">Solicitar fecha</a></li>
         </ul>
       </nav>
@@ -78,6 +79,7 @@
         <p class="kicker">Dos propuestas y una alternativa</p>
         <h2 id="rutas-t">Rutas propuestas</h2>
         <p class="aviso">Las cifras de cada ruta proceden de tracks publicados en Wikiloc. Son mediciones registradas por quien grabó el recorrido, no la duración de una actividad guiada, y deben comprobarse sobre el terreno antes de ofrecer la ruta.</p>
+        <p class="rutas-precio-nota">Precio por persona según la dificultad de la ruta. Los grupos son de un máximo de 15 personas.</p>
         <div class="rutas">
       <article class="ruta ruta-facil" id="ruta-facil" aria-labelledby="ruta-facil-t">
         <figure class="ruta-foto"><img src="img/poza.jpg" srcset="img/poza-800.jpg 800w, img/poza.jpg 1600w" sizes="(min-width: 56rem) 36rem, 100vw" alt="Poza de agua clara al pie de paredes de roca cubiertas de vegetación" loading="lazy" decoding="async"></figure>
@@ -86,6 +88,7 @@
           <p class="ruta-etiqueta">Propuesta fácil</p>
           <h3 id="ruta-facil-t">Canuto de la Utrera y Baños de la Hedionda</h3>
           <p class="nivel nivel-facil"><span class="nivel-marcas" aria-hidden="true"><span class="on"></span><span class=""></span><span class=""></span></span>Wikiloc: Fácil</p>
+          <p class="ruta-precio"><strong>10 €</strong> por persona</p>
         </div>
         <p class="ruta-resumen">Recorrido corto de ida y vuelta por el tramo frondoso del Canuto, regresando por el mismo camino. El track se acerca a los Baños de la Hedionda.</p>
         <dl class="ruta-datos">
@@ -106,6 +109,7 @@
           <p class="ruta-etiqueta">Propuesta difícil</p>
           <h3 id="ruta-dificil-t">Baños, Poza de la Paloma, Torcal y Canuto</h3>
           <p class="nivel nivel-dificil"><span class="nivel-marcas" aria-hidden="true"><span class="on"></span><span class="on"></span><span class="on"></span></span>Wikiloc: Difícil</p>
+          <p class="ruta-precio"><strong>25 €</strong> por persona</p>
         </div>
         <p class="ruta-resumen">Ruta circular larga que enlaza los Baños de la Hedionda, la Poza de la Paloma y el Torcal de Utrera, y regresa por el Canuto de la Utrera.</p>
         <dl class="ruta-datos">
@@ -129,6 +133,7 @@
           <p class="ruta-etiqueta">Ruta alternativa moderada</p>
           <h3 id="ruta-moderada-t">Baños de la Hedionda, Molino Cancón y Canuto de la Utrera</h3>
           <p class="nivel nivel-moderada"><span class="nivel-marcas" aria-hidden="true"><span class="on"></span><span class="on"></span><span class=""></span></span>Wikiloc: Moderada</p>
+          <p class="ruta-precio"><strong>20 €</strong> por persona</p>
         </div>
         <p class="ruta-resumen">Circular de longitud intermedia entre las dos propuestas anteriores, con paso por el Molino Cancón y el Canuto de la Utrera.</p>
         <dl class="ruta-datos">
@@ -287,8 +292,84 @@
           </details>
           <details>
             <summary>¿Cuánto cuesta y cómo se reserva?</summary>
-            <div class="faq-r"><p>Los precios todavía no están definidos. Cuando se abran plazas, se podrá solicitar una fecha desde el calendario; enviar la solicitud no confirma la plaza.</p></div>
+            <div class="faq-r"><p>Precio por persona: ruta fácil 10 €, ruta moderada 20 € y ruta difícil 25 €. Los grupos son de un máximo de 15 personas. Se puede solicitar una fecha desde el calendario; enviar la solicitud no confirma la plaza.</p></div>
           </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="seccion seccion-material" id="material" aria-labelledby="material-t">
+      <div class="envoltura">
+        <p class="kicker">Merchandising y equipamiento oficial</p>
+        <h2 id="material-t">Material para tu ruta</h2>
+        <p class="entradilla-sec">Reserva con antelación la ropa y el equipamiento que quieras tener el día de tu salida. Desliza o usa las flechas para verlo todo. Reservar no confirma el pedido: el equipo revisa tu solicitud y te responde.</p>
+        <noscript><p class="aviso">Para reservar material hay que activar JavaScript en el navegador. Estos son los artículos y sus precios.</p></noscript>
+        <div class="carrusel" data-carrusel role="region" aria-roledescription="carrusel" aria-label="Material del proyecto">
+          <div class="carrusel-barra">
+            <p class="carrusel-estado" id="car-estado">19 artículos</p>
+            <div class="carrusel-ctrl">
+              <a class="mr-enlace" id="mr-enlace" href="#mr-t" hidden></a>
+              <button type="button" class="car-btn car-play" data-car="play" hidden></button>
+              <button type="button" class="car-btn" data-car="ant" aria-label="Artículos anteriores" hidden><span aria-hidden="true">‹</span></button>
+              <button type="button" class="car-btn" data-car="sig" aria-label="Artículos siguientes" hidden><span aria-hidden="true">›</span></button>
+            </div>
+          </div>
+          <ul class="carrusel-pista" id="car-pista" tabindex="0" aria-label="Artículos de material. Usa las flechas izquierda y derecha para moverte.">
+          <li class="prod" data-prod="camiseta" data-nombre="Camiseta técnica" data-precio="24.95"><figure class="prod-foto"><img src="img/material/camiseta.webp" alt="Camiseta técnica verde oscuro y otra beige con el logotipo de Canuto de la Utrera" width="480" height="480" loading="lazy" decoding="async"></figure><div class="prod-cuerpo"><h3>Camiseta técnica</h3><p class="prod-nota">Transpirable</p><p class="prod-precio">24,95 €</p><div class="prod-accion"><div class="prod-opciones"><label>Talla<select data-opcion="talla" data-etiqueta="Talla"><option value="S">S</option><option value="M">M</option><option value="L">L</option><option value="XL">XL</option><option value="XXL">XXL</option></select></label><label>Color<select data-opcion="color" data-etiqueta="Color"><option value="Verde">Verde</option><option value="Beige">Beige</option></select></label></div><button type="button" class="boton prod-reservar" hidden>Reservar<span class="sr-only"> Camiseta técnica</span></button></div></div></li>
+          <li class="prod" data-prod="sudadera" data-nombre="Sudadera outdoor" data-precio="44.95"><figure class="prod-foto"><img src="img/material/sudadera.webp" alt="Sudadera negra con capucha y el logotipo bordado en el pecho" width="480" height="480" loading="lazy" decoding="async"></figure><div class="prod-cuerpo"><h3>Sudadera outdoor</h3><p class="prod-nota"></p><p class="prod-precio">44,95 €</p><div class="prod-accion"><div class="prod-opciones"><label>Talla<select data-opcion="talla" data-etiqueta="Talla"><option value="S">S</option><option value="M">M</option><option value="L">L</option><option value="XL">XL</option><option value="XXL">XXL</option></select></label></div><button type="button" class="boton prod-reservar" hidden>Reservar<span class="sr-only"> Sudadera outdoor</span></button></div></div></li>
+          <li class="prod" data-prod="softshell" data-nombre="Chaqueta softshell" data-precio="69.95"><figure class="prod-foto"><img src="img/material/softshell.webp" alt="Chaqueta softshell oscura con capucha y cremallera central" width="480" height="480" loading="lazy" decoding="async"></figure><div class="prod-cuerpo"><h3>Chaqueta softshell</h3><p class="prod-nota">Cortavientos / impermeable</p><p class="prod-precio">69,95 €</p><div class="prod-accion"><div class="prod-opciones"><label>Talla<select data-opcion="talla" data-etiqueta="Talla"><option value="S">S</option><option value="M">M</option><option value="L">L</option><option value="XL">XL</option><option value="XXL">XXL</option></select></label></div><button type="button" class="boton prod-reservar" hidden>Reservar<span class="sr-only"> Chaqueta softshell</span></button></div></div></li>
+          <li class="prod" data-prod="impermeable" data-nombre="Chaqueta impermeable" data-precio="89.95"><figure class="prod-foto"><img src="img/material/impermeable.webp" alt="Chaqueta impermeable verde oscuro con capucha" width="480" height="480" loading="lazy" decoding="async"></figure><div class="prod-cuerpo"><h3>Chaqueta impermeable</h3><p class="prod-nota">10.000 mm</p><p class="prod-precio">89,95 €</p><div class="prod-accion"><div class="prod-opciones"><label>Talla<select data-opcion="talla" data-etiqueta="Talla"><option value="S">S</option><option value="M">M</option><option value="L">L</option><option value="XL">XL</option><option value="XXL">XXL</option></select></label></div><button type="button" class="boton prod-reservar" hidden>Reservar<span class="sr-only"> Chaqueta impermeable</span></button></div></div></li>
+          <li class="prod" data-prod="pantalon" data-nombre="Pantalón outdoor" data-precio="54.95"><figure class="prod-foto"><img src="img/material/pantalon.webp" alt="Pantalón outdoor negro con bolsillos laterales" width="480" height="480" loading="lazy" decoding="async"></figure><div class="prod-cuerpo"><h3>Pantalón outdoor</h3><p class="prod-nota">Elástico / resistente</p><p class="prod-precio">54,95 €</p><div class="prod-accion"><div class="prod-opciones"><label>Talla<select data-opcion="talla" data-etiqueta="Talla"><option value="S">S</option><option value="M">M</option><option value="L">L</option><option value="XL">XL</option><option value="XXL">XXL</option></select></label></div><button type="button" class="boton prod-reservar" hidden>Reservar<span class="sr-only"> Pantalón outdoor</span></button></div></div></li>
+          <li class="prod" data-prod="gorra" data-nombre="Gorra trucker / outdoor" data-precio="16.95"><figure class="prod-foto"><img src="img/material/gorra.webp" alt="Dos gorras trucker, una verde y otra beige, con el logotipo" width="480" height="480" loading="lazy" decoding="async"></figure><div class="prod-cuerpo"><h3>Gorra trucker / outdoor</h3><p class="prod-nota"></p><p class="prod-precio">16,95 €</p><div class="prod-accion"><div class="prod-opciones"><label>Color<select data-opcion="color" data-etiqueta="Color"><option value="Verde">Verde</option><option value="Beige">Beige</option></select></label></div><button type="button" class="boton prod-reservar" hidden>Reservar<span class="sr-only"> Gorra trucker / outdoor</span></button></div></div></li>
+          <li class="prod" data-prod="buff" data-nombre="Buff multifunción" data-precio="12.95"><figure class="prod-foto"><img src="img/material/buff.webp" alt="Braga de cuello verde oscuro con dibujo de montañas" width="480" height="480" loading="lazy" decoding="async"></figure><div class="prod-cuerpo"><h3>Buff multifunción</h3><p class="prod-nota">Térmico / transpirable</p><p class="prod-precio">12,95 €</p><div class="prod-accion"><button type="button" class="boton prod-reservar" hidden>Reservar<span class="sr-only"> Buff multifunción</span></button></div></div></li>
+          <li class="prod" data-prod="gorro" data-nombre="Gorro térmico" data-precio="14.95"><figure class="prod-foto"><img src="img/material/gorro.webp" alt="Gorro de lana verde oscuro con parche del logotipo" width="480" height="480" loading="lazy" decoding="async"></figure><div class="prod-cuerpo"><h3>Gorro térmico</h3><p class="prod-nota"></p><p class="prod-precio">14,95 €</p><div class="prod-accion"><button type="button" class="boton prod-reservar" hidden>Reservar<span class="sr-only"> Gorro térmico</span></button></div></div></li>
+          <li class="prod" data-prod="gafas" data-nombre="Gafas outdoor" data-precio="29.95"><figure class="prod-foto"><img src="img/material/gafas.webp" alt="Gafas deportivas negras con cristales verdes" width="480" height="480" loading="lazy" decoding="async"></figure><div class="prod-cuerpo"><h3>Gafas outdoor</h3><p class="prod-nota">UV400 / polarizadas</p><p class="prod-precio">29,95 €</p><div class="prod-accion"><button type="button" class="boton prod-reservar" hidden>Reservar<span class="sr-only"> Gafas outdoor</span></button></div></div></li>
+          <li class="prod" data-prod="botella" data-nombre="Botella térmica" data-precio="19.95"><figure class="prod-foto"><img src="img/material/botella.webp" alt="Botella térmica verde oscuro con el logotipo" width="480" height="480" loading="lazy" decoding="async"></figure><div class="prod-cuerpo"><h3>Botella térmica</h3><p class="prod-nota">750 ml</p><p class="prod-precio">19,95 €</p><div class="prod-accion"><button type="button" class="boton prod-reservar" hidden>Reservar<span class="sr-only"> Botella térmica</span></button></div></div></li>
+          <li class="prod" data-prod="taza" data-nombre="Taza outdoor" data-precio="11.95"><figure class="prod-foto"><img src="img/material/taza.webp" alt="Taza metálica blanca de esmalte con el logotipo" width="480" height="480" loading="lazy" decoding="async"></figure><div class="prod-cuerpo"><h3>Taza outdoor</h3><p class="prod-nota">Metálica</p><p class="prod-precio">11,95 €</p><div class="prod-accion"><button type="button" class="boton prod-reservar" hidden>Reservar<span class="sr-only"> Taza outdoor</span></button></div></div></li>
+          <li class="prod" data-prod="llavero" data-nombre="Llavero" data-precio="5.95"><figure class="prod-foto"><img src="img/material/llavero.webp" alt="Llavero metálico redondo con una montaña grabada" width="480" height="480" loading="lazy" decoding="async"></figure><div class="prod-cuerpo"><h3>Llavero</h3><p class="prod-nota"></p><p class="prod-precio">5,95 €</p><div class="prod-accion"><button type="button" class="boton prod-reservar" hidden>Reservar<span class="sr-only"> Llavero</span></button></div></div></li>
+          <li class="prod" data-prod="parche" data-nombre="Parche bordado" data-precio="6.95"><figure class="prod-foto"><img src="img/material/parche.webp" alt="Parche bordado con el logotipo de Canuto de la Utrera Tours" width="480" height="480" loading="lazy" decoding="async"></figure><div class="prod-cuerpo"><h3>Parche bordado</h3><p class="prod-nota">Velcro</p><p class="prod-precio">6,95 €</p><div class="prod-accion"><button type="button" class="boton prod-reservar" hidden>Reservar<span class="sr-only"> Parche bordado</span></button></div></div></li>
+          <li class="prod" data-prod="mochila" data-nombre="Mochila de montaña" data-precio="79.95"><figure class="prod-foto"><img src="img/material/mochila.webp" alt="Mochila de montaña verde oscuro con el logotipo" width="480" height="480" loading="lazy" decoding="async"></figure><div class="prod-cuerpo"><h3>Mochila de montaña</h3><p class="prod-nota"></p><p class="prod-precio">79,95 €</p><div class="prod-accion"><div class="prod-opciones"><label>Capacidad<select data-opcion="capacidad" data-etiqueta="Capacidad"><option value="30 L">30 L</option><option value="40 L">40 L</option></select></label></div><button type="button" class="boton prod-reservar" hidden>Reservar<span class="sr-only"> Mochila de montaña</span></button></div></div></li>
+          <li class="prod" data-prod="bolsa" data-nombre="Bolsa estanca" data-precio="24.95"><figure class="prod-foto"><img src="img/material/bolsa.webp" alt="Bolsa estanca verde oscuro con cierre enrollable" width="480" height="480" loading="lazy" decoding="async"></figure><div class="prod-cuerpo"><h3>Bolsa estanca</h3><p class="prod-nota"></p><p class="prod-precio">24,95 €</p><div class="prod-accion"><div class="prod-opciones"><label>Capacidad<select data-opcion="capacidad" data-etiqueta="Capacidad"><option value="10 L">10 L</option><option value="20 L">20 L</option></select></label></div><button type="button" class="boton prod-reservar" hidden>Reservar<span class="sr-only"> Bolsa estanca</span></button></div></div></li>
+          <li class="prod" data-prod="bastones" data-nombre="Bastones de trekking" data-precio="34.95"><figure class="prod-foto"><img src="img/material/bastones.webp" alt="Par de bastones de trekking negros y verdes" width="480" height="480" loading="lazy" decoding="async"></figure><div class="prod-cuerpo"><h3>Bastones de trekking</h3><p class="prod-nota">Ajustables</p><p class="prod-precio">34,95 €</p><div class="prod-accion"><button type="button" class="boton prod-reservar" hidden>Reservar<span class="sr-only"> Bastones de trekking</span></button></div></div></li>
+          <li class="prod" data-prod="frontal" data-nombre="Frontal LED" data-precio="29.95"><figure class="prod-foto"><img src="img/material/frontal.webp" alt="Linterna frontal LED con la luz encendida" width="480" height="480" loading="lazy" decoding="async"></figure><div class="prod-cuerpo"><h3>Frontal LED</h3><p class="prod-nota">Recargable / 1.000 lm</p><p class="prod-precio">29,95 €</p><div class="prod-accion"><button type="button" class="boton prod-reservar" hidden>Reservar<span class="sr-only"> Frontal LED</span></button></div></div></li>
+          <li class="prod" data-prod="botiquin" data-nombre="Botiquín básico" data-precio="19.95"><figure class="prod-foto"><img src="img/material/botiquin.webp" alt="Botiquín verde militar con una cruz blanca" width="480" height="480" loading="lazy" decoding="async"></figure><div class="prod-cuerpo"><h3>Botiquín básico</h3><p class="prod-nota"></p><p class="prod-precio">19,95 €</p><div class="prod-accion"><button type="button" class="boton prod-reservar" hidden>Reservar<span class="sr-only"> Botiquín básico</span></button></div></div></li>
+          <li class="prod" data-prod="toalla" data-nombre="Toalla microfibra" data-precio="14.95"><figure class="prod-foto"><img src="img/material/toalla.webp" alt="Toalla de microfibra verde oscuro doblada" width="480" height="480" loading="lazy" decoding="async"></figure><div class="prod-cuerpo"><h3>Toalla microfibra</h3><p class="prod-nota">Ligera / secado rápido</p><p class="prod-precio">14,95 €</p><div class="prod-accion"><button type="button" class="boton prod-reservar" hidden>Reservar<span class="sr-only"> Toalla microfibra</span></button></div></div></li>
+          </ul>
+        </div>
+        <p class="material-nota">Imágenes ilustrativas. Precio por unidad.</p>
+
+        <div class="material-reserva" data-material hidden>
+          <div class="mr-caja" id="mr-caja">
+            <div class="mr-col">
+              <h3 id="mr-t" tabindex="-1">Tu reserva de material</h3>
+              <p id="mr-vacio" class="mr-vacio">Aún no has añadido nada. Elige un artículo del carrusel y pulsa «Reservar».</p>
+              <ul id="mr-lista" class="mr-lista" hidden></ul>
+              <p id="mr-total" class="mr-total" hidden>Total estimado: <strong></strong></p>
+              <p id="mr-live" class="sr-only" role="status" aria-live="polite"></p>
+            </div>
+            <form id="mr-form" class="mr-col mr-form" novalidate hidden>
+              <p class="r-uso">Pedimos estos datos solo para responder a tu reserva. Reservar no confirma el pedido ni garantiza que haya existencias.</p>
+              <div id="mr-errores" class="r-errores" tabindex="-1" hidden>
+                <p><strong>Revisa estos datos:</strong></p>
+                <ul></ul>
+              </div>
+              <div class="trampa" aria-hidden="true"><label for="m-web">No rellenes este campo</label><input type="text" id="m-web" name="web" tabindex="-1" autocomplete="off"></div>
+              <div class="campo"><label for="m-nombre">Nombre y apellidos</label><input id="m-nombre" name="nombre" type="text" autocomplete="name" maxlength="120" required aria-describedby="merr-nombre"><p class="campo-error" id="merr-nombre" hidden></p></div>
+              <div class="campo"><label for="m-email">Correo electrónico</label><input id="m-email" name="email" type="email" autocomplete="email" inputmode="email" maxlength="254" required aria-describedby="merr-email"><p class="campo-error" id="merr-email" hidden></p></div>
+              <div class="campo"><label for="m-telefono">Teléfono</label><input id="m-telefono" name="telefono" type="tel" autocomplete="tel" inputmode="tel" maxlength="25" required aria-describedby="merr-telefono"><p class="campo-error" id="merr-telefono" hidden></p></div>
+              <div class="campo"><label for="m-ruta">Ruta en la que lo necesitas</label><select id="m-ruta" name="ruta" aria-describedby="merr-ruta"></select><p class="campo-error" id="merr-ruta" hidden></p></div>
+              <div class="campo campo-fecha" id="m-fecha-campo"><p class="campo-etq" id="m-fecha-etq">Fecha de la ruta</p><input type="hidden" id="m-fecha" name="fecha"><div class="mini-cal" id="m-cal" tabindex="-1" role="group" aria-labelledby="m-fecha-etq" aria-describedby="m-fecha-sel merr-fecha"><div class="cal-nav"><button type="button" class="cal-flecha" id="m-mes-ant" aria-label="Mes anterior"><span aria-hidden="true">‹</span></button><label for="m-mes" class="sr-only">Mes</label><select id="m-mes"></select><button type="button" class="cal-flecha" id="m-mes-sig" aria-label="Mes siguiente"><span aria-hidden="true">›</span></button></div><table class="cal-tabla"><thead><tr id="m-cab"></tr></thead><tbody id="m-dias"></tbody></table><p id="m-fecha-sel" class="cal-estado" role="status" aria-live="polite">Elige un día en el calendario.</p></div><p class="campo-error" id="merr-fecha" hidden></p></div>
+              <div class="campo"><label for="m-comentarios">Comentarios <span class="opcional">(opcional)</span></label><p class="campo-ayuda" id="mayuda-comentarios">Por ejemplo, otra talla o dudas sobre un artículo.</p><textarea id="m-comentarios" name="comentarios" rows="3" maxlength="600" aria-describedby="mayuda-comentarios merr-comentarios"></textarea><p class="campo-error" id="merr-comentarios" hidden></p></div>
+              <div class="campo campo-check" id="m-privacidad-caja" hidden><input type="checkbox" id="m-privacidad" name="privacidad" aria-describedby="merr-privacidad"><label for="m-privacidad">He leído y acepto la política de privacidad</label><p class="campo-error" id="merr-privacidad" hidden></p></div>
+              <p id="mr-aviso" class="r-aviso" hidden>El envío de reservas todavía no está activo.</p>
+              <button type="submit" id="mr-enviar" class="boton">Enviar reserva</button>
+            </form>
+          </div>
+          <div id="mr-exito" class="r-exito" tabindex="-1" role="status" hidden>
+            <h3>Reserva enviada</h3>
+            <p data-exito-detalle></p>
+            <p>Esto no confirma el pedido: la reserva queda a la espera de que el equipo la revise y te responda.</p>
+          </div>
         </div>
       </div>
     </section>
@@ -404,9 +485,11 @@
     <button type="button" class="visor-btn visor-cerrar" data-visor="cerrar" aria-label="Cerrar"><span aria-hidden="true">×</span></button>
   </dialog>
   <script id="datos-reservas" type="application/json">{"idioma":"es","locale":"es-ES","textos":{"plaza":"plaza","plazas":"plazas","disponible":"disponible","completa":"Completa","noDisponible":"No disponible","sinFechas":"Por ahora no hay fechas abiertas para esta ruta.","sinFechasMes":"No hay fechas disponibles este mes.","irProxima":"Ir a la próxima fecha disponible","fechaMes":"fecha disponible este mes.","fechasMes":"fechas disponibles este mes.","ruta":"Ruta","fecha":"Fecha","plazasLibres":"Plazas libres","enviando":"Enviando…","enviar":"Enviar solicitud","persona":"persona","personas":"personas","errorEnvio":"No se ha podido enviar la solicitud. Revisa tu conexión e inténtalo de nuevo."},"rutas":[{"id":"ruta-facil","nombre":"Canuto de la Utrera y Baños de la Hedionda"},{"id":"ruta-dificil","nombre":"Baños, Poza de la Paloma, Torcal y Canuto"},{"id":"ruta-moderada","nombre":"Baños de la Hedionda, Molino Cancón y Canuto de la Utrera"}],"calendario":{"desde":2026,"hasta":2027},"disponibilidad":[],"envio":{"endpoint":null},"privacidad":{"url":null}}</script>
+  <script id="datos-material" type="application/json">{"idioma":"es","locale":"es-ES","textos":{"fechaElegida":"Fecha elegida: {fecha}.","sinFecha":"Elige un día en el calendario.","mostrando":"Mostrando {a}–{b} de {n}","anadido":"{nombre} añadido a tu reserva","quitado":"{nombre} quitado de tu reserva","pausar":"Pausar el carrusel","reanudar":"Reanudar el carrusel","verReserva":"Ver mi reserva ({n})","mas":"Añadir una unidad de","menos":"Quitar una unidad de","quitar":"Quitar","quitarDe":"Quitar de la reserva:","cantidad":"Cantidad","sinMaterial":"Añade al menos un artículo a tu reserva.","enviando":"Enviando…","enviar":"Enviar reserva","errorEnvio":"No se ha podido enviar la reserva. Revisa tu conexión e inténtalo de nuevo.","exito":"{n} {u} para la ruta «{ruta}», el {fecha}.","unidad":"unidad","unidades":"unidades","anadir":"Reservar"}}</script>
   <script id="datos-app" type="application/json">{"de":"de","offline":"Sin conexión: el mapa necesita internet para cargar. Los lugares de referencia están en la lista."}</script>
   <script src="reservas-validacion.js" defer></script>
   <script src="reservas.js" defer></script>
+  <script src="merch.js" defer></script>
   <script src="vendor/leaflet/leaflet.js" defer></script>
   <script src="app.js" defer></script>
 </body>
