@@ -12,6 +12,16 @@
   cfg.rutas.forEach(function (r) { rutasPorId[r.id] = r; });
 
   var T = cfg.textos; // textos de la interfaz en el idioma de la página
+  // Días de salida: lista de días de la semana (0 = domingo ... 6 = sábado) que se define en #datos-reservas ("diasSemana").
+  var DIAS = Array.isArray(cfg.diasSemana) && cfg.diasSemana.length ? cfg.diasSemana : null;
+  function textoDias() {
+    if (!DIAS || !T.diasSalida) return "";
+    var f = new Intl.DateTimeFormat(cfg.locale, { weekday: "long", timeZone: "UTC" });
+    var nombres = DIAS.slice().sort(function (a, b) { return ((a + 6) % 7) - ((b + 6) % 7); }).map(function (d) { return f.format(new Date(Date.UTC(2024, 0, 7 + d))); });
+    var lista = (window.Intl && Intl.ListFormat) ? new Intl.ListFormat(cfg.locale, { style: "long", type: "conjunction" }).format(nombres) : nombres.join(", ");
+    return T.diasSalida.replace("{dias}", lista);
+  }
+
   var fmtMes = new Intl.DateTimeFormat(cfg.locale, { month: "long", timeZone: "UTC" });
   var fmtLargo = new Intl.DateTimeFormat(cfg.locale, { weekday: "long", day: "numeric", month: "long", year: "numeric", timeZone: "UTC" });
 
@@ -44,6 +54,7 @@
     if (demo && rutasPorId[ruta] && f >= hoy) {
       var a = Number(f.slice(0, 4));
       if (a < cfg.calendario.desde || a > cfg.calendario.hasta) return null;
+      if (DIAS && DIAS.indexOf(utc(f).getUTCDay()) === -1) return null;
       return { estado: "disponible", plazas: PLAZAS_DEMO };
     }
     var e = dispo[ruta] && dispo[ruta][f];
@@ -156,7 +167,7 @@
 
     var todas = fechasLibres(ruta);
     if (demo) {
-      estado.textContent = libresMes + " " + (libresMes === 1 ? T.fechaMes : T.fechasMes);
+      estado.textContent = libresMes + " " + (libresMes === 1 ? T.fechaMes : T.fechasMes) + " " + textoDias();
     } else if (!todas.length) {
       estado.textContent = T.sinFechas;
     } else if (!libresMes) {

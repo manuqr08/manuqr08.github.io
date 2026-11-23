@@ -566,3 +566,11 @@ html { background: var(--caliza); -webkit-tap-highlight-color: transparent; }
 .cal-dia:active, .car-btn:active, .cal-flecha:active, .mr-cant button:active { background: var(--campo); }
 .car-btn:hover, .cal-flecha:hover:not(:disabled), .mr-cant button:hover:not(:disabled) { background: var(--campo); border-color: var(--musgo); }
 .cal-dia.libre[aria-pressed="true"]:active { background: var(--oliva-cl); }
+
+
+/* Segunda foto (espalda) de camiseta, sudadera y softshell */
+.prod-giro { position: absolute; left: .6rem; bottom: .9rem; z-index: 2; min-height: 40px; padding: 0 .9rem; border-radius: 999px; border: 1.5px solid var(--roca-osc); background: rgba(255, 253, 248, .94); color: var(--titulo); font: inherit; font-weight: 700; font-size: .85rem; cursor: pointer; }
+.prod-giro[hidden] { display: none; }
+.prod-giro:hover { border-color: var(--musgo); background: #fff; }
+.prod-foto img[hidden] { display: none; }
+.prod-foto { background: var(--caliza-2); }

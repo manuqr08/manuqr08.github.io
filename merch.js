@@ -13,6 +13,16 @@
   var T = cfg.textos;
   var envioCfg = { rutas: [], envio: {}, privacidad: {} };
   try { envioCfg = JSON.parse(document.getElementById("datos-reservas").textContent); } catch (e) {}
+  // Días de salida: lista de días de la semana (0 = domingo ... 6 = sábado) que se define en #datos-reservas ("diasSemana").
+  var DIAS = Array.isArray(envioCfg.diasSemana) && envioCfg.diasSemana.length ? envioCfg.diasSemana : null;
+  function textoDias() {
+    if (!DIAS || !T.diasSalida) return "";
+    var f = new Intl.DateTimeFormat(cfg.locale, { weekday: "long", timeZone: "UTC" });
+    var nombres = DIAS.slice().sort(function (a, b) { return ((a + 6) % 7) - ((b + 6) % 7); }).map(function (d) { return f.format(new Date(Date.UTC(2024, 0, 7 + d))); });
+    var lista = (window.Intl && Intl.ListFormat) ? new Intl.ListFormat(cfg.locale, { style: "long", type: "conjunction" }).format(nombres) : nombres.join(", ");
+    return T.diasSalida.replace("{dias}", lista);
+  }
+
 
   var fmtPrecio = new Intl.NumberFormat(cfg.locale, { style: "currency", currency: "EUR" });
   var fmtLargo = new Intl.DateTimeFormat(cfg.locale, { weekday: "long", day: "numeric", month: "long", year: "numeric", timeZone: "UTC" });
@@ -185,7 +195,8 @@
       b.appendChild(num);
       var largo = fmtLargo.format(utcDe(f));
       b.setAttribute("aria-label", largo);
-      if (f < hoy) { b.disabled = true; b.classList.add("pasada"); }
+      var cerrado = DIAS && DIAS.indexOf(utcDe(f).getUTCDay()) === -1;
+      if (f < hoy || cerrado) { b.disabled = true; b.classList.add("pasada"); if (cerrado && f >= hoy) b.setAttribute("aria-label", largo + ", " + T.noDisponible); }
       else { b.classList.add("libre"); b.setAttribute("aria-pressed", f === fechaSel ? "true" : "false"); }
       if (f === hoy) b.classList.add("hoy");
       td.appendChild(b);
@@ -207,7 +218,7 @@
   }
   function limpiarFecha() {
     fechaSel = ""; campoFecha.value = "";
-    mcEstado.textContent = T.sinFecha;
+    mcEstado.textContent = (T.sinFecha + " " + textoDias()).trim();
     mcMes = 0;
     pintarMiniCal();
   }
@@ -228,6 +239,7 @@
     if (todos[j] && !todos[j].disabled) { ev.preventDefault(); todos[j].focus(); }
   });
   pintarMiniCal();
+  mcEstado.textContent = (T.sinFecha + " " + textoDias()).trim();
 
   (envioCfg.rutas || []).forEach(function (r) {
     var o = document.createElement("option");
@@ -332,6 +344,15 @@
   }
 
   pista.addEventListener("click", function (ev) {
+    var g = ev.target.closest(".prod-giro");
+    if (g) {
+      var imgs = g.closest(".prod-foto").querySelectorAll("img");
+      var verEspalda = imgs[1].hidden;
+      imgs[0].hidden = verEspalda;
+      imgs[1].hidden = !verEspalda;
+      g.firstChild.nodeValue = verEspalda ? g.dataset.frente : g.dataset.espalda;
+      return;
+    }
     var b = ev.target.closest(".prod-reservar");
     if (!b) return;
     var t = b.closest(".prod");
@@ -342,6 +363,7 @@
     b._t = window.setTimeout(function () { b.firstChild.nodeValue = b.dataset.etq; }, 1500);
   });
   tarjetas.forEach(function (t) { t.querySelector(".prod-reservar").hidden = false; });
+  pista.querySelectorAll(".prod-giro").forEach(function (g) { g.hidden = false; });
 
   lista.addEventListener("click", function (ev) {
     var b = ev.target.closest("button[data-accion]");
