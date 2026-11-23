@@ -1,11 +1,11 @@
 // Generado por build.mjs: no editar a mano.
 // Service worker: permite usar la web sin conexión e instalarla en el móvil.
-const VERSION = "material-20261123d";
+const VERSION = "demo-20261123";
 const BASE = "canuto-base-" + VERSION;
 const EXTRA = "canuto-extra";   // fotos grandes y tipografías, al verlas
 const TESELAS = "canuto-mapa";  // teselas del mapa ya vistas
 const MAX_TESELAS = 300;
-const PRECACHE = ["./","index.html","en.html","styles.v2.css","app.js","reservas.js","merch.js","reservas-validacion.js","vendor/leaflet/leaflet.js","vendor/leaflet/leaflet.css","manifest.json","favicon-32.png","favicon-180.png","icon-192.png","icon-512.png","img/logo.png","img/logo-claro.png","img/marca-clara.png","img/agua-turquesa-800.jpg","img/banos-boveda-800.jpg","img/barranco-800.jpg","img/cueva-800.jpg","img/edificio-camino-800.jpg","img/paredes-karsticas-800.jpg","img/poza-800.jpg","img/prado-farallon-800.jpg","img/sendero-canuto-800.jpg"];
+const PRECACHE = ["./","index.html","en.html","styles.v3.css","app.js","reservas.v2.js","merch.v2.js","reservas-validacion.js","vendor/leaflet/leaflet.js","vendor/leaflet/leaflet.css","manifest.json","favicon-32.png","favicon-180.png","icon-192.png","icon-512.png","img/logo.png","img/logo-claro.png","img/marca-clara.png","img/marca.png","img/agua-turquesa-800.jpg","img/banos-boveda-800.jpg","img/barranco-800.jpg","img/cueva-800.jpg","img/edificio-camino-800.jpg","img/paredes-karsticas-800.jpg","img/poza-800.jpg","img/prado-farallon-800.jpg","img/sendero-canuto-800.jpg"];
 
 self.addEventListener("install", (e) => {
   e.waitUntil(caches.open(BASE).then((c) => c.addAll(PRECACHE)).then(() => self.skipWaiting()));

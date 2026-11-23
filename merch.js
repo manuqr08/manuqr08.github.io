@@ -237,7 +237,8 @@
   var rutasPorId = {};
   (envioCfg.rutas || []).forEach(function (r) { rutasPorId[r.id] = r; });
 
-  var puedeEnviar = Boolean(envioCfg.envio && envioCfg.envio.endpoint && envioCfg.privacidad && envioCfg.privacidad.url && window.ReservasValidacion);
+  var simulado = !(envioCfg.envio && envioCfg.envio.endpoint); // sin servidor, el envío se simula
+  var puedeEnviar = Boolean(window.ReservasValidacion);
   if (envioCfg.privacidad && envioCfg.privacidad.url) {
     cajaPriv.hidden = false;
     var etqPriv = cajaPriv.querySelector("label");
@@ -246,7 +247,7 @@
     a.textContent = etqPriv.textContent;
     etqPriv.textContent = ""; etqPriv.appendChild(a);
   }
-  if (!puedeEnviar) { btnEnviar.disabled = true; aviso.hidden = false; }
+  if (!puedeEnviar) { btnEnviar.disabled = true; if (aviso) aviso.hidden = false; }
 
   function guardar() { try { sessionStorage.setItem(CLAVE, JSON.stringify(cesta.map(function (l) { return { clave: l.clave, id: l.id, opciones: l.opciones, cantidad: l.cantidad }; }))); } catch (e) {} }
   function cargar() {
@@ -403,7 +404,7 @@
     };
     var r = window.ReservasValidacion.validarSolicitud(datos, {
       rutas: (envioCfg.rutas || []).map(function (x) { return x.id; }),
-      plazas: Infinity, hoy: hoy, requierePrivacidad: true, idioma: cfg.idioma,
+      plazas: Infinity, hoy: hoy, requierePrivacidad: Boolean(envioCfg.privacidad && envioCfg.privacidad.url), idioma: cfg.idioma,
     });
     var errores = r.errores;
     if (!cesta.length) errores.material = T.sinMaterial;
@@ -421,11 +422,14 @@
     var n = unidades();
     btnEnviar.disabled = true;
     btnEnviar.textContent = T.enviando;
-    fetch(envioCfg.envio.endpoint, {
-      method: "POST",
-      headers: { "Content-Type": "application/json", Accept: "application/json" },
-      body: JSON.stringify(carga),
-    })
+    var envio = simulado
+      ? new Promise(function (ok) { window.setTimeout(function () { ok({ ok: true }); }, 700); })
+      : fetch(envioCfg.envio.endpoint, {
+          method: "POST",
+          headers: { "Content-Type": "application/json", Accept: "application/json" },
+          body: JSON.stringify(carga),
+        });
+    envio
       .then(function (res) {
         if (!res.ok) throw new Error("HTTP " + res.status);
         var p = r.limpio.fecha.split("-").map(Number);

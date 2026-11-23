@@ -6,30 +6,9 @@
   try { datos = JSON.parse(document.getElementById("datos-app").textContent); } catch (e) {}
   var raizHtml = document.documentElement;
 
-  // --- Modo oscuro --------------------------------------------------------
-  // Sin elección guardada se sigue la preferencia del sistema.
-  var botonTema = document.querySelector("[data-tema]");
-  var prefiereOscuro = window.matchMedia ? window.matchMedia("(prefers-color-scheme: dark)") : null;
-  function temaActual() {
-    return raizHtml.dataset.tema || (prefiereOscuro && prefiereOscuro.matches ? "oscuro" : "claro");
-  }
-  function pintarTema() {
-    var oscuro = temaActual() === "oscuro";
-    if (botonTema) botonTema.setAttribute("aria-pressed", String(oscuro));
-    var meta = document.querySelector('meta[name="theme-color"]');
-    if (meta) meta.setAttribute("content", oscuro ? "#0a110d" : "#101b15");
-  }
-  if (botonTema) {
-    botonTema.hidden = false;
-    botonTema.addEventListener("click", function () {
-      var nuevo = temaActual() === "oscuro" ? "claro" : "oscuro";
-      raizHtml.dataset.tema = nuevo;
-      try { localStorage.setItem("tema", nuevo); } catch (e) {}
-      pintarTema();
-    });
-    if (prefiereOscuro && prefiereOscuro.addEventListener) prefiereOscuro.addEventListener("change", pintarTema);
-    pintarTema();
-  }
+  // El sitio usa siempre el fondo claro: se limpia cualquier tema guardado antes.
+  try { localStorage.removeItem("tema"); } catch (e) {}
+  delete raizHtml.dataset.tema;
 
   // --- Visor de fotos (galería) -------------------------------------------
   var visor = document.getElementById("visor");

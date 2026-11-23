@@ -36,7 +36,16 @@
       plazas: Math.max(0, Math.floor(Number(e.plazas) || 0)),
     };
   });
+  // Demostración: sin servidor ni fechas configuradas, cualquier día futuro del rango se puede elegir.
+  var simulado = !(cfg.envio && cfg.envio.endpoint);
+  var demo = simulado && !cfg.disponibilidad.length;
+  var PLAZAS_DEMO = 15;
   function entrada(ruta, f) {
+    if (demo && rutasPorId[ruta] && f >= hoy) {
+      var a = Number(f.slice(0, 4));
+      if (a < cfg.calendario.desde || a > cfg.calendario.hasta) return null;
+      return { estado: "disponible", plazas: PLAZAS_DEMO };
+    }
     var e = dispo[ruta] && dispo[ruta][f];
     if (!e || f < hoy) return null;
     return e;
@@ -64,7 +73,7 @@
   var listaErrores = document.getElementById("r-errores");
   var exito = document.getElementById("r-exito");
 
-  var puedeEnviar = Boolean(cfg.envio && cfg.envio.endpoint && cfg.privacidad && cfg.privacidad.url);
+  var puedeEnviar = true; // sin servidor, el envío se simula (ver "simulado")
 
   // Meses del rango
   var meses = [];
@@ -146,7 +155,9 @@
     }
 
     var todas = fechasLibres(ruta);
-    if (!todas.length) {
+    if (demo) {
+      estado.textContent = libresMes + " " + (libresMes === 1 ? T.fechaMes : T.fechasMes);
+    } else if (!todas.length) {
       estado.textContent = T.sinFechas;
     } else if (!libresMes) {
       var prox = todas[0];
@@ -221,7 +232,7 @@
   // Formulario
   if (!puedeEnviar) {
     btnEnviar.disabled = true;
-    aviso.hidden = false;
+    if (aviso) aviso.hidden = false;
   }
 
   function limpiarErrores() {
@@ -262,17 +273,20 @@
     };
     var r = validar(datos, {
       rutas: cfg.rutas.map(function (x) { return x.id; }),
-      plazas: seleccion ? seleccion.plazas : 0, hoy: hoy, requierePrivacidad: true, idioma: cfg.idioma,
+      plazas: seleccion ? seleccion.plazas : 0, hoy: hoy, requierePrivacidad: Boolean(cfg.privacidad && cfg.privacidad.url), idioma: cfg.idioma,
     });
     if (!r.valido) { mostrarErrores(r.errores); return; }
 
     btnEnviar.disabled = true;
     btnEnviar.textContent = T.enviando;
-    fetch(cfg.envio.endpoint, {
-      method: "POST",
-      headers: { "Content-Type": "application/json", Accept: "application/json" },
-      body: JSON.stringify(r.limpio),
-    })
+    var envio = simulado
+      ? new Promise(function (ok) { window.setTimeout(function () { ok({ ok: true }); }, 700); })
+      : fetch(cfg.envio.endpoint, {
+          method: "POST",
+          headers: { "Content-Type": "application/json", Accept: "application/json" },
+          body: JSON.stringify(r.limpio),
+        });
+    envio
       .then(function (res) {
         if (!res.ok) throw new Error("HTTP " + res.status);
         var rt = rutasPorId[r.limpio.ruta];

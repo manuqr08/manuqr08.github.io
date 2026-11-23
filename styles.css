@@ -1,7 +1,7 @@
 /* Canuto de la Utrera Tours — caliza, agua y vegetación */
 :root {
   --caliza: #f4efe4;
-  --caliza-2: #e9e1d0;
+  --caliza-2: #f4efe4;
   --roca: #bdb19b;
   --roca-osc: #776c5a;
   --musgo: #5b6a31;
@@ -22,7 +22,7 @@
   --radio: 10px;
   --ancho: 74rem;
   --sombra: 0 1px 2px rgba(16, 26, 20, .08), 0 12px 32px -12px rgba(16, 26, 20, .25);
-  /* Colores que cambian con el modo oscuro */
+  /* Colores base */
   --superficie: #fffdf8;
   --superficie-2: #fbf9f4;
   --campo: #fff;
@@ -37,40 +37,6 @@
   --error: #a3281b; --error-fondo: #fdf1ef;
   --dia: #9a9384; --dia-pasada: #bdb6a7;
   color-scheme: light;
-}
-
-/* Modo oscuro: por preferencia del sistema (si no se ha elegido otro) o por el botón */
-@media (prefers-color-scheme: dark) {
-  :root:not([data-tema="claro"]) {
-    --caliza: #0f1712; --caliza-2: #131e17; --linea: #34423a; --roca-osc: #6f7e72; --roca: #55635a;
-    --texto: #e3e9df; --texto-2: #aab5a6;
-    --superficie: #18231c; --superficie-2: #16201a; --campo: #0f1712;
-    --titulo: #f1f5ee; --enlace: #6fd0c7; --oliva: #b8c47e;
-    --etq-facil: #2b3520; --etq-facil-t: #cbd69a;
-    --etq-dificil: #3b2618; --etq-dificil-t: #f0b884;
-    --etq-moderada: #173634; --etq-moderada-t: #9fe0d8;
-    --nota: #2c2219; --nota-facil: #222b1b;
-    --libre: #2b3a1f; --libre-hover: #3a4d29;
-    --completa-1: #1f2a23; --completa-2: #26322a;
-    --error: #ff8f80; --error-fondo: #3a1d19; --dia: #8c968a; --dia-pasada: #4f5a52;
-    --sombra: 0 1px 2px rgba(0, 0, 0, .3), 0 12px 32px -12px rgba(0, 0, 0, .6);
-    color-scheme: dark;
-  }
-}
-:root[data-tema="oscuro"] {
-  --caliza: #0f1712; --caliza-2: #131e17; --linea: #34423a; --roca-osc: #6f7e72; --roca: #55635a;
-  --texto: #e3e9df; --texto-2: #aab5a6;
-  --superficie: #18231c; --superficie-2: #16201a; --campo: #0f1712;
-  --titulo: #f1f5ee; --enlace: #6fd0c7; --oliva: #b8c47e;
-  --etq-facil: #2b3520; --etq-facil-t: #cbd69a;
-  --etq-dificil: #3b2618; --etq-dificil-t: #f0b884;
-  --etq-moderada: #173634; --etq-moderada-t: #9fe0d8;
-  --nota: #2c2219; --nota-facil: #222b1b;
-  --libre: #2b3a1f; --libre-hover: #3a4d29;
-  --completa-1: #1f2a23; --completa-2: #26322a;
-  --error: #ff8f80; --error-fondo: #3a1d19; --dia: #8c968a; --dia-pasada: #4f5a52;
-  --sombra: 0 1px 2px rgba(0, 0, 0, .3), 0 12px 32px -12px rgba(0, 0, 0, .6);
-  color-scheme: dark;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -389,11 +355,6 @@ textarea { min-height: 6rem; resize: vertical; }
 .leaflet-popup-content strong { font-family: var(--serif); font-size: 1.1rem; color: #101b15; }
 .leaflet-popup-content p { margin: .3rem 0 0; color: #333; }
 .leaflet-bar a, .leaflet-container a.leaflet-popup-close-button { min-width: 34px; min-height: 34px; }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-tema="claro"]) .leaflet-tile-pane { filter: invert(1) hue-rotate(180deg) brightness(.92) contrast(.9) saturate(.6); }
-}
-:root[data-tema="oscuro"] .leaflet-tile-pane { filter: invert(1) hue-rotate(180deg) brightness(.92) contrast(.9) saturate(.6); }
-
 /* Naturaleza */
 .naturaleza { display: grid; gap: 1rem; margin-top: 2.5rem; }
 @media (min-width: 44rem) { .naturaleza { grid-template-columns: 1fr 1fr; gap: 1.25rem; } }
@@ -526,3 +487,82 @@ textarea { min-height: 6rem; resize: vertical; }
 .mini-cal .cal-dia { max-height: 3.1rem; }
 .mini-cal .cal-estado { font-size: .95rem; }
 @media (max-width: 30rem) { .mini-cal { max-width: none; padding: .7rem .5rem; } }
+
+
+/* Fondo claro único: el mismo color en toda la web y en todos los meses */
+:root { color-scheme: light; }
+body, .seccion, .seccion-mapa, .seccion-faq, .seccion-reservas, .seccion-entorno, .seccion-material { background: var(--caliza); }
+.tema { display: none !important; }
+
+/* Cabecera y portada claras */
+.cabecera, .marca, .cabecera nav a { color: var(--titulo); }
+.marca:hover { color: var(--musgo); }
+.cabecera nav a:hover { background: rgba(16, 26, 20, .08); color: var(--titulo); }
+.idioma { border-color: rgba(16, 26, 20, .45); color: var(--titulo); }
+.idioma:hover { background: var(--oliva-cl); border-color: var(--oliva-cl); color: var(--titulo); }
+.portada { background: var(--caliza); color: var(--texto); min-height: 0; }
+.portada h1 { color: var(--titulo); }
+.antetitulo { color: var(--musgo); }
+.entradilla { color: var(--texto-2); }
+.estado { border-color: rgba(16, 26, 20, .35); color: var(--titulo); }
+.estado::before { background: var(--oliva); }
+.boton-borde { border-color: var(--musgo); color: var(--musgo); }
+.boton-borde:hover { background: rgba(91, 106, 49, .12); border-color: var(--musgo); color: var(--musgo); }
+.boton:hover { background: var(--oliva); border-color: var(--oliva); color: #fff; }
+.boton-claro:hover { background: #a9b66c; border-color: #a9b66c; color: var(--titulo); }
+.estratos .e1 { fill: #d3dabb; opacity: 1; }
+.estratos .e2 { fill: #e2d9c4; }
+.estratos .e3 { fill: #ece5d3; }
+@media (max-width: 59.99rem) {
+  .portada-in { align-content: start; padding-top: 6.5rem; padding-bottom: 5.5rem; }
+  .portada-fotos { position: relative; inset: auto; z-index: 0; order: -1; }
+  .pf-1 { position: relative; inset: auto; aspect-ratio: 4 / 3; border-radius: 18px; overflow: hidden; box-shadow: var(--sombra); }
+  .pf-1::after { display: none; }
+}
+
+/* Entorno, galería, pie y visor claros */
+.seccion-entorno { color: var(--texto); }
+.seccion-entorno h2, .seccion-entorno h3 { color: var(--titulo); }
+.seccion-entorno .kicker { color: var(--oliva); }
+.entorno-lugares h3, .galeria-t { color: var(--texto-2); }
+.entorno-lugares li { border-top-color: var(--linea); }
+.entorno-lugares strong { color: var(--titulo); }
+.entorno-lugares span { color: var(--texto-2); }
+.gal { background: var(--caliza-2); }
+.gal figcaption { background: rgba(255, 253, 248, .92); color: var(--titulo); }
+.pie { background: var(--caliza); color: var(--texto-2); border-top: 1px solid var(--linea); }
+.pie strong { color: var(--titulo); }
+.pie-idioma { color: var(--enlace); }
+.pie-idioma:hover { color: var(--titulo); }
+.visor { background: rgba(244, 239, 228, .98); color: var(--titulo); }
+.visor::backdrop { background: rgba(244, 239, 228, .8); }
+.visor figcaption { color: var(--texto); }
+.visor-cuenta { color: var(--texto-2); }
+.visor-btn { border-color: rgba(16, 26, 20, .45); background: rgba(255, 253, 248, .92); color: var(--titulo); }
+.visor-btn:hover { background: var(--oliva-cl); color: var(--titulo); border-color: var(--oliva-cl); }
+
+/* Calendarios: todos los días tienen el mismo fondo, en cualquier mes */
+.cal-dia, .cal-dia.pasada, .cal-dia.libre, .cal-dia.completa, .cal-dia.libre:hover { background: var(--campo); border: 1px solid var(--linea); color: var(--dia-pasada); }
+.cal-dia.libre { border-color: var(--oliva); color: var(--titulo); }
+.cal-dia.libre:hover { background: var(--campo); border-color: var(--musgo); border-width: 2px; padding: 1px; }
+.cal-dia.completa { border-style: dashed; border-color: var(--roca-osc); color: var(--texto-2); }
+.cal-dia.hoy { box-shadow: inset 0 0 0 1px var(--roca-osc); }
+.cal-dia.libre[aria-pressed="true"], .cal-dia.libre[aria-pressed="true"]:hover { background: var(--oliva-cl); border: 2px solid var(--musgo); padding: 1px; color: var(--titulo); }
+.mk-libre, .mk-completa, .mk-no { background: var(--campo); }
+.mk-libre { border-color: var(--oliva); }
+.mk-completa { border: 1px dashed var(--roca-osc); }
+.prod-foto { background: #d8d2c8; }
+
+/* Visor de fotos: mismo fondo claro que el resto de la página, sin velo ni cambio de tono */
+.visor { background: var(--caliza); }
+.visor::backdrop { background: var(--caliza); }
+
+/* Al pulsar o tocar no cambia ningún fondo: sin destello táctil, sin velo y con un único fondo */
+html { background: var(--caliza); -webkit-tap-highlight-color: transparent; }
+* { -webkit-tap-highlight-color: transparent; }
+::selection { background: var(--oliva-cl); color: var(--titulo); }
+:focus:not(:focus-visible) { outline: none; }
+.prod, .prod:active, .prod:focus-within, .carrusel-pista, .carrusel-pista:focus, .material-reserva, .mr-caja, .mr-item { -webkit-user-select: auto; }
+.cal-dia:active, .car-btn:active, .cal-flecha:active, .mr-cant button:active { background: var(--campo); }
+.car-btn:hover, .cal-flecha:hover:not(:disabled), .mr-cant button:hover:not(:disabled) { background: var(--campo); border-color: var(--musgo); }
+.cal-dia.libre[aria-pressed="true"]:active { background: var(--oliva-cl); }
