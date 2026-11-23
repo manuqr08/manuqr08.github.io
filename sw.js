@@ -1,6 +1,6 @@
 // Generado por build.mjs: no editar a mano.
 // Service worker: permite usar la web sin conexión e instalarla en el móvil.
-const VERSION = "material-20261123";
+const VERSION = "material-20261123c";
 const BASE = "canuto-base-" + VERSION;
 const EXTRA = "canuto-extra";   // fotos grandes y tipografías, al verlas
 const TESELAS = "canuto-mapa";  // teselas del mapa ya vistas
