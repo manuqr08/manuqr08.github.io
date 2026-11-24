@@ -1,8 +1,8 @@
 // Generado por build.mjs: no editar a mano.
 // Service worker: permite usar la web sin conexión e instalarla en el móvil.
-const VERSION = "mochilas-20261123";
+const VERSION = "fotos-nuevas-20261124";
 const BASE = "canuto-base-" + VERSION;
-const EXTRA = "canuto-extra";   // fotos grandes y tipografías, al verlas
+const EXTRA = "canuto-extra-" + VERSION;   // fotos grandes y tipografías, al verlas
 const TESELAS = "canuto-mapa";  // teselas del mapa ya vistas
 const MAX_TESELAS = 300;
 const PRECACHE = ["./","index.html","en.html","styles.v4.css","app.js","reservas.v3.js","merch.v6.js","reservas-validacion.js","vendor/leaflet/leaflet.js","vendor/leaflet/leaflet.css","manifest.json","favicon-32.png","favicon-180.png","icon-192.png","icon-512.png","img/logo.png","img/logo-claro.png","img/marca-clara.png","img/marca.png","img/agua-turquesa-800.jpg","img/banos-boveda-800.jpg","img/barranco-800.jpg","img/cueva-800.jpg","img/edificio-camino-800.jpg","img/paredes-karsticas-800.jpg","img/poza-800.jpg","img/prado-farallon-800.jpg","img/sendero-canuto-800.jpg"];
@@ -14,7 +14,7 @@ self.addEventListener("install", (e) => {
 self.addEventListener("activate", (e) => {
   e.waitUntil(
     caches.keys()
-      .then((ks) => Promise.all(ks.filter((k) => k.startsWith("canuto-base-") && k !== BASE).map((k) => caches.delete(k))))
+      .then((ks) => Promise.all(ks.filter((k) => (k.startsWith("canuto-base-") || k.startsWith("canuto-extra")) && k !== BASE && k !== EXTRA).map((k) => caches.delete(k))))
       .then(() => self.clients.claim())
   );
 });
@@ -69,14 +69,17 @@ self.addEventListener("fetch", (e) => {
 
   if (url.origin !== self.location.origin) return;
 
-  // Archivos propios: caché y actualización en segundo plano. Si una foto grande
-  // no está guardada y no hay red, se sirve su versión de 800 px.
+  // Archivos propios: caché de la versión exacta (con su ?v=) y actualización en
+  // segundo plano. Sin red se sirve cualquier copia guardada y, si una foto grande
+  // no está guardada, su versión de 800 px.
   e.respondWith(
-    caches.match(req, { ignoreSearch: true }).then((hit) => {
+    caches.match(req).then((hit) => {
       const red = fetch(req)
         .then((res) => guardar(hit ? BASE : EXTRA, req, res))
         .catch(async () => {
           if (hit) return hit;
+          const copia = await caches.match(req, { ignoreSearch: true });
+          if (copia) return copia;
           if (/\.jpg$/.test(url.pathname) && !/-800\.jpg$/.test(url.pathname)) {
             const peq = await caches.match(url.pathname.replace(/\.jpg$/, "-800.jpg"));
             if (peq) return peq;
