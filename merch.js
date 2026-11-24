@@ -8,7 +8,6 @@
   var nodo = document.getElementById("datos-material");
   var panel = document.querySelector("[data-material]");
   if (!raiz || !nodo || !panel) return;
-
   var cfg = JSON.parse(nodo.textContent);
   var T = cfg.textos;
   var envioCfg = { rutas: [], envio: {}, privacidad: {} };
@@ -22,17 +21,13 @@
     var lista = (window.Intl && Intl.ListFormat) ? new Intl.ListFormat(cfg.locale, { style: "long", type: "conjunction" }).format(nombres) : nombres.join(", ");
     return T.diasSalida.replace("{dias}", lista);
   }
-
-
   var fmtPrecio = new Intl.NumberFormat(cfg.locale, { style: "currency", currency: "EUR" });
   var fmtLargo = new Intl.DateTimeFormat(cfg.locale, { weekday: "long", day: "numeric", month: "long", year: "numeric", timeZone: "UTC" });
   function tpl(s, d) { return s.replace(/\{(\w+)\}/g, function (_, k) { return d[k] === undefined ? "" : d[k]; }); }
   function centimos(p) { return Math.round(Number(p) * 100); }
   function eur(c) { return fmtPrecio.format(c / 100); }
-
   var reducir = !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
   var comportamiento = reducir ? "auto" : "smooth";
-
   // ------------------------------------------------------------------ Carrusel
   var pista = document.getElementById("car-pista");
   var tarjetas = Array.prototype.slice.call(pista.querySelectorAll(".prod"));
@@ -40,7 +35,6 @@
   var btnAnt = raiz.querySelector('[data-car="ant"]');
   var btnSig = raiz.querySelector('[data-car="sig"]');
   var btnPlay = raiz.querySelector('[data-car="play"]');
-
   function paso() {
     var t = tarjetas[0];
     var cs = window.getComputedStyle(pista);
@@ -49,7 +43,6 @@
   }
   function porVista() { return Math.max(1, Math.round((pista.clientWidth + 1) / paso())); }
   function alFinal() { return pista.scrollLeft + pista.clientWidth >= pista.scrollWidth - 3; }
-
   function mover(direccion, unidades) {
     var avance = paso() * (unidades || porVista());
     if (direccion > 0) {
@@ -60,7 +53,6 @@
       else pista.scrollBy({ left: -avance, behavior: comportamiento });
     }
   }
-
   var ticket = false;
   function pintarEstado() {
     ticket = false;
@@ -73,7 +65,6 @@
     if (!ticket) { ticket = true; window.requestAnimationFrame(pintarEstado); }
   }, { passive: true });
   window.addEventListener("resize", pintarEstado);
-
   pista.addEventListener("keydown", function (ev) {
     if (ev.target !== pista) return;
     if (ev.key === "ArrowRight") { ev.preventDefault(); mover(1, 1); }
@@ -82,7 +73,6 @@
   btnAnt.hidden = btnSig.hidden = btnPlay.hidden = false;
   btnAnt.addEventListener("click", function () { parar(); mover(-1); });
   btnSig.addEventListener("click", function () { parar(); mover(1); });
-
   // Rotación automática: se detiene al interactuar y con «prefiere menos movimiento».
   var rota = !reducir;
   var temporizador = null;
@@ -114,15 +104,33 @@
   pintarPlay();
   pintarEstado();
   arrancar();
-
   // -------------------------------------------------------------------- Reserva
   var precios = {};
   tarjetas.forEach(function (t) { precios[t.dataset.prod] = { nombre: t.dataset.nombre, precio: Number(t.dataset.precio) }; });
 
+  // Precio de una línea según las opciones elegidas (una <option data-precio> manda sobre el precio base).
+  function precioLinea(id, ops) {
+    var t = pista.querySelector('.prod[data-prod="' + id + '"]');
+    var base = precios[id] ? precios[id].precio : 0;
+    if (!t) return base;
+    var opts = t.querySelectorAll("select[data-opcion] option[data-precio]");
+    for (var i = 0; i < opts.length; i++) {
+      var o = opts[i];
+      var sel = o.parentNode;
+      for (var j = 0; j < ops.length; j++) {
+        if (ops[j].etiqueta === sel.dataset.etiqueta && ops[j].valor === o.value) return Number(o.dataset.precio);
+      }
+    }
+    return base;
+  }
+  function pintarPrecio(t) {
+    var ops = Array.prototype.map.call(t.querySelectorAll("select[data-opcion]"), function (s) { return { etiqueta: s.dataset.etiqueta, valor: s.value }; });
+    var el = t.querySelector(".prod-precio");
+    if (el) el.textContent = fmtPrecio.format(precioLinea(t.dataset.prod, ops));
+  }
   var cesta = []; // { clave, id, nombre, opciones: [{etiqueta, valor}], cantidad, precio }
   var MAX_CANT = 10;
   var CLAVE = "canuto-material-" + cfg.idioma;
-
   var caja = document.getElementById("mr-caja");
   var lista = document.getElementById("mr-lista");
   var vacio = document.getElementById("mr-vacio");
@@ -137,10 +145,8 @@
   var selRuta = document.getElementById("m-ruta");
   var campoFecha = document.getElementById("m-fecha");
   var cajaPriv = document.getElementById("m-privacidad-caja");
-
   var ahora = new Date();
   var hoy = ahora.getFullYear() + "-" + String(ahora.getMonth() + 1).padStart(2, "0") + "-" + String(ahora.getDate()).padStart(2, "0");
-
   // Calendario visible para elegir la fecha de la ruta (mes desplegado, días seleccionables).
   var mcSelMes = document.getElementById("m-mes");
   var mcAnt = document.getElementById("m-mes-ant");
@@ -240,7 +246,6 @@
   });
   pintarMiniCal();
   mcEstado.textContent = (T.sinFecha + " " + textoDias()).trim();
-
   (envioCfg.rutas || []).forEach(function (r) {
     var o = document.createElement("option");
     o.value = r.id; o.textContent = r.nombre;
@@ -248,7 +253,6 @@
   });
   var rutasPorId = {};
   (envioCfg.rutas || []).forEach(function (r) { rutasPorId[r.id] = r; });
-
   var simulado = !(envioCfg.envio && envioCfg.envio.endpoint); // sin servidor, el envío se simula
   var puedeEnviar = Boolean(window.ReservasValidacion);
   if (envioCfg.privacidad && envioCfg.privacidad.url) {
@@ -260,7 +264,6 @@
     etqPriv.textContent = ""; etqPriv.appendChild(a);
   }
   if (!puedeEnviar) { btnEnviar.disabled = true; if (aviso) aviso.hidden = false; }
-
   function guardar() { try { sessionStorage.setItem(CLAVE, JSON.stringify(cesta.map(function (l) { return { clave: l.clave, id: l.id, opciones: l.opciones, cantidad: l.cantidad }; }))); } catch (e) {} }
   function cargar() {
     try {
@@ -271,15 +274,13 @@
         var cant = Math.floor(Number(l && l.cantidad));
         if (!p || !(cant >= 1)) return;
         var ops = Array.isArray(l.opciones) ? l.opciones.filter(function (o) { return o && typeof o.etiqueta === "string" && typeof o.valor === "string"; }) : [];
-        cesta.push({ clave: String(l.clave), id: l.id, nombre: p.nombre, opciones: ops, cantidad: Math.min(MAX_CANT, cant), precio: p.precio });
+        cesta.push({ clave: String(l.clave), id: l.id, nombre: p.nombre, opciones: ops, cantidad: Math.min(MAX_CANT, cant), precio: precioLinea(l.id, ops) });
       });
     } catch (e) {}
   }
-
   function avisar(txt) { live.textContent = ""; window.setTimeout(function () { live.textContent = txt; }, 30); }
   function textoOpciones(l) { return l.opciones.map(function (o) { return o.etiqueta + ": " + o.valor; }).join(" · "); }
   function unidades() { return cesta.reduce(function (n, l) { return n + l.cantidad; }, 0); }
-
   function pintarCesta() {
     lista.textContent = "";
     var tot = 0;
@@ -326,7 +327,6 @@
     if (hay) enlace.textContent = tpl(T.verReserva, { n: unidades() });
     guardar();
   }
-
   function anadir(tarjeta) {
     var id = tarjeta.dataset.prod;
     var p = precios[id];
@@ -337,20 +337,17 @@
     var clave = id + "|" + ops.map(function (o) { return o.valor; }).join("|");
     var linea = cesta.filter(function (l) { return l.clave === clave; })[0];
     if (linea) linea.cantidad = Math.min(MAX_CANT, linea.cantidad + 1);
-    else cesta.push({ clave: clave, id: id, nombre: p.nombre, opciones: ops, cantidad: 1, precio: p.precio });
+    else cesta.push({ clave: clave, id: id, nombre: p.nombre, opciones: ops, cantidad: 1, precio: precioLinea(id, ops) });
     pintarCesta();
     exito.hidden = true;
     avisar(tpl(T.anadido, { nombre: p.nombre }) + ". " + tpl(T.verReserva, { n: unidades() }));
   }
-
   pista.addEventListener("click", function (ev) {
     var g = ev.target.closest(".prod-giro");
     if (g) {
-      var imgs = g.closest(".prod-foto").querySelectorAll("img");
-      var verEspalda = imgs[1].hidden;
-      imgs[0].hidden = verEspalda;
-      imgs[1].hidden = !verEspalda;
-      g.firstChild.nodeValue = verEspalda ? g.dataset.frente : g.dataset.espalda;
+      var tg = g.closest(".prod");
+      tg.dataset.vista = tg.dataset.vista === "espalda" ? "frente" : "espalda";
+      pintarFoto(tg);
       return;
     }
     var b = ev.target.closest(".prod-reservar");
@@ -363,8 +360,28 @@
     b._t = window.setTimeout(function () { b.firstChild.nodeValue = b.dataset.etq; }, 1500);
   });
   tarjetas.forEach(function (t) { t.querySelector(".prod-reservar").hidden = false; });
-  pista.querySelectorAll(".prod-giro").forEach(function (g) { g.hidden = false; });
-
+  // La foto sigue al color elegido y a la vista (frente o espalda).
+  function pintarFoto(t) {
+    var sel = t.querySelector('select[data-opcion="color"]');
+    var color = sel ? sel.value : "";
+    var vista = t.dataset.vista || "frente";
+    var imgs = t.querySelectorAll(".prod-foto img");
+    var coincide = function (i, v) { return (!i.dataset.color || i.dataset.color === color) && i.dataset.vista === v; };
+    var hay = function (v) { return Array.prototype.some.call(imgs, function (i) { return coincide(i, v); }); };
+    if (vista === "espalda" && !hay("espalda")) vista = "frente";
+    Array.prototype.forEach.call(imgs, function (i) { i.hidden = !coincide(i, vista); });
+    var g = t.querySelector(".prod-giro");
+    if (g) { g.hidden = !hay("espalda"); g.firstChild.nodeValue = vista === "espalda" ? g.dataset.frente : g.dataset.espalda; }
+    t.dataset.vista = vista;
+  }
+  tarjetas.forEach(pintarFoto);
+  pista.addEventListener("change", function (ev) {
+    var s = ev.target.closest('select[data-opcion="color"]');
+    if (s) pintarFoto(s.closest(".prod"));
+    var o = ev.target.closest("select[data-opcion]");
+    if (o) pintarPrecio(o.closest(".prod"));
+  });
+  tarjetas.forEach(pintarPrecio);
   lista.addEventListener("click", function (ev) {
     var b = ev.target.closest("button[data-accion]");
     if (!b) return;
@@ -387,7 +404,6 @@
       if (otro) otro.focus();
     }
   });
-
   // ------------------------------------------------------------------- Envío
   function limpiarErrores() {
     form.querySelectorAll("[aria-invalid]").forEach(function (c) { c.removeAttribute("aria-invalid"); });
@@ -412,7 +428,6 @@
     listaErrores.hidden = false;
     listaErrores.focus();
   }
-
   form.addEventListener("submit", function (ev) {
     ev.preventDefault();
     limpiarErrores();
@@ -431,7 +446,6 @@
     var errores = r.errores;
     if (!cesta.length) errores.material = T.sinMaterial;
     if (Object.keys(errores).length) { mostrarErrores(errores); return; }
-
     var material = cesta.map(function (l) {
       return { id: l.id, nombre: l.nombre, opciones: l.opciones, cantidad: l.cantidad, precio: l.precio };
     });
@@ -470,7 +484,6 @@
       .catch(function () { mostrarErrores({ envio: T.errorEnvio }); })
       .then(function () { btnEnviar.disabled = false; btnEnviar.textContent = T.enviar; });
   });
-
   cargar();
   panel.hidden = false;
   pintarCesta();
