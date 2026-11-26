@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Canuto de la Utrera Tours · Guided routes in the Sierra de la Utrera</title>
+  <meta name="robots" content="noindex">
   <meta name="description" content="Active tourism project offering guided routes through the natural and geological setting of the Sierra de la Utrera, between Casares and Manilva (Málaga, Spain).">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="en_GB">
@@ -28,6 +29,8 @@
 <body>
   <a class="saltar" href="#contenido">Skip to content</a>
 
+  <div class="aviso-demo" role="note" style="background:#7a2e1d;color:#fff;text-align:center;padding:.6rem 1rem;font-size:.95rem;line-height:1.4"><strong>Demo website for an academic project.</strong> Canuto de la Utrera Tours is not a real business: no bookings, orders or hiring are accepted, and no data is sent.</div>
+  <div class="marco-demo" style="position:relative">
   <header class="cabecera">
     <div class="envoltura cabecera-in">
       <a class="marca" href="#inicio"><img src="img/marca.png" alt="" width="44" height="37"><span>Canuto de la Utrera Tours</span></a>
@@ -359,7 +362,7 @@
               <div class="campo campo-fecha" id="m-fecha-campo"><p class="campo-etq" id="m-fecha-etq">Route date</p><input type="hidden" id="m-fecha" name="fecha"><div class="mini-cal" id="m-cal" tabindex="-1" role="group" aria-labelledby="m-fecha-etq" aria-describedby="m-fecha-sel merr-fecha"><div class="cal-nav"><button type="button" class="cal-flecha" id="m-mes-ant" aria-label="Previous month"><span aria-hidden="true">‹</span></button><label for="m-mes" class="sr-only">Month</label><select id="m-mes"></select><button type="button" class="cal-flecha" id="m-mes-sig" aria-label="Next month"><span aria-hidden="true">›</span></button></div><table class="cal-tabla"><thead><tr id="m-cab"></tr></thead><tbody id="m-dias"></tbody></table><p id="m-fecha-sel" class="cal-estado" role="status" aria-live="polite">Choose a day in the calendar.</p></div><p class="campo-error" id="merr-fecha" hidden></p></div>
               <div class="campo"><label for="m-comentarios">Comments <span class="opcional">(optional)</span></label><p class="campo-ayuda" id="mayuda-comentarios">For example, a different size or questions about an item.</p><textarea id="m-comentarios" name="comentarios" rows="3" maxlength="600" aria-describedby="mayuda-comentarios merr-comentarios"></textarea><p class="campo-error" id="merr-comentarios" hidden></p></div>
               <div class="campo campo-check" id="m-privacidad-caja" hidden><input type="checkbox" id="m-privacidad" name="privacidad" aria-describedby="merr-privacidad"><label for="m-privacidad">I have read and accept the privacy policy</label><p class="campo-error" id="merr-privacidad" hidden></p></div>
-              <button type="submit" id="mr-enviar" class="boton">Send reservation</button>
+              <p class="aviso-demo-form" style="margin:0 0 .5rem;padding:.4rem .7rem;border-radius:8px;font-size:.9rem;font-weight:600;background:#7a2e1d;color:#fff">Demo: this request is not sent to anyone and does not book anything.</p><button type="submit" id="mr-enviar" class="boton">Send reservation</button>
             </form>
           </div>
           <div id="mr-exito" class="r-exito" tabindex="-1" role="status" hidden>
@@ -449,7 +452,7 @@
               <textarea id="r-comentarios" name="comentarios" rows="4" maxlength="1000" aria-describedby="ayuda-comentarios err-comentarios"></textarea>
               <p class="campo-error" id="err-comentarios" hidden></p>
             </div>
-            <button type="submit" id="r-enviar" class="boton">Send request</button>
+            <p class="aviso-demo-form" style="margin:0 0 .5rem;padding:.4rem .7rem;border-radius:8px;font-size:.9rem;font-weight:600;background:#7a2e1d;color:#fff">Demo: this request is not sent to anyone and does not book anything.</p><button type="submit" id="r-enviar" class="boton">Send request</button>
           </form>
 
           <div id="r-exito" class="r-exito" tabindex="-1" role="status" hidden>
@@ -461,6 +464,7 @@
       </div>
     </section>
   </main>
+  </div>
 
   <footer class="pie">
     <div class="envoltura">
